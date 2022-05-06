@@ -15,8 +15,8 @@ class User(db.Model):
     password = db.Column(db.String(50), nullable=False)
 
     #items = list of items a user has
-    #lender = 
-    #renter =
+    #lends = list of rentals where user has rented out items 
+    #rents = list of rentals where user has borrowed
 
     def __repr__(self):
         """Show info about user."""
@@ -29,12 +29,15 @@ class Item(db.Model):
 
     item_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
     item_name = db.Column(db.String(50), nullable=False)
-    description = db.Column(db.Text(400), nullable=False)
+    description = db.Column(db.Text, nullable=False)
     price = db.Column(db.Integer, nullable=False)
+    # num_likes = db.Column(db.Integer)
+    # num_views = db.Column(db.Integer)
     street_address = db.Column(db.String(50))
     city = db.Column(db.String(50))
     state = db.Column(db.String(2))
     zipcode = db.Column(db.String(10))
+    available = db.Column(db.Boolean, nullable=False)
 
     #rentals = a list of rentals this item has been associated with
 
@@ -44,7 +47,7 @@ class Item(db.Model):
 
     def __repr__(self):
         """Show info about item."""
-        return f'<Item user_id={self.item_id} item_name={self.item_name} user_id={self.user}>'
+        return f'<Item user_id={self.item_id} item_name={self.item_name} user_id={self.user_id}>'
 
 class Rental(db.Model):
     """An order placed by a user to rent an item"""
@@ -63,9 +66,9 @@ class Rental(db.Model):
     renter_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
 
     #relationships
-    lender = db.relationship("User", foreign_keys=[lender_id], backref="rentals")
-    renter = db.relationship("User", foreign_keys=[renter_id], backref="rentals")
-    item = db.relationship("Item", backref="rentals")
+    lender = db.relationship("User", foreign_keys=[lender_id], backref="lends")
+    renter = db.relationship("User", foreign_keys=[renter_id], backref="rents")
+    item = db.relationship("Item", backref="rentals") #item being rented
 
     def __repr__(self):
         """Show info about rental."""
