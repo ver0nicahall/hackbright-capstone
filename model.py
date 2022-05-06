@@ -87,9 +87,10 @@ class Review(db.Model):
     score = db.Column(db.Integer, nullable=False)
     comments = db.Column(db.Text, nullable=True)
     timestamp = db.Column(db.DateTime, nullable=False)
+    #foreign keys
     lender_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     renter_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-    
+
 
     #relationships
     lender = db.relationship("User", foreign_keys=[lender_id], backref="reviews_received")
@@ -102,11 +103,11 @@ class Message(db.Model):
 
     message_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
     timestamp = db.Column(db.DateTime, nullable=False)
+    #foreign keys
     sender_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     receiver_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
 
     #relationships
-
     sender = db.relationship("User", foreign_keys=[sender_id], backref="messages_sent")
     receiver = db.relationship("User", foreign_keys=[receiver_id], backref="messages_received")
 
