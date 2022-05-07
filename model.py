@@ -44,6 +44,8 @@ class Item(db.Model):
     available = db.Column(db.Boolean, nullable=False)
 
     #rentals = a list of rentals this item has been associated with
+    #reviews = a list of reviews this item is associated with
+    #images = a list of images associates with this iem 
 
     #foreign key
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
@@ -76,7 +78,7 @@ class Rental(db.Model):
 
     def __repr__(self):
         """Show info about rental."""
-        return f'<Rental lender_id={self.lender_id} renter_id={self.renter_id} item_id={self.item_id}>'
+        return f'<Rental rental_id={self.rental_id} rental_total={self.rental_total} item_id={self.item_id}>'
 
 class Review(db.Model):
     """A rating left on an item."""
@@ -87,14 +89,21 @@ class Review(db.Model):
     score = db.Column(db.Integer, nullable=False)
     comments = db.Column(db.Text, nullable=True)
     timestamp = db.Column(db.DateTime, nullable=False)
+
     #foreign keys
     lender_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     renter_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+    item_id = db.Column(db.Integer, db.ForeignKey("items.item_id"))
 
 
     #relationships
+    item = db.relationship("Item", backref="reviews")
     lender = db.relationship("User", foreign_keys=[lender_id], backref="reviews_received")
     renter = db.relationship("User", foreign_keys=[renter_id], backref="reviews_left")
+
+    def __repr__(self):
+        """Show info about review."""
+        return f'<Review review_id={self.review_id} score={self.score} item_id={self.item_id}>'
 
 class Message(db.Model):
     """A text message sent from one user to another."""
@@ -102,6 +111,7 @@ class Message(db.Model):
     __tablename__ = "messages"
 
     message_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
+    text = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, nullable=False)
     #foreign keys
     sender_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
@@ -111,6 +121,27 @@ class Message(db.Model):
     sender = db.relationship("User", foreign_keys=[sender_id], backref="messages_sent")
     receiver = db.relationship("User", foreign_keys=[receiver_id], backref="messages_received")
 
+    def __repr__(self):
+        """Show info about message."""
+        return f'<Review message_id={self.message_id} text={self.text} timestamp={self.timestamp}>'
+
+class Image(db.Model):
+    """An image associated with a listing."""
+
+    __tablename__ = "images"
+
+    image_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
+    url = db.Column(db.String, nullable=False)
+    
+    #foreignkey
+    item_id = db.Column(db.Integer, db.ForeignKey("items.item_id"))
+
+    #relationships
+    item = db.relationship("Item", backref="images")
+
+    def __repr__(self):
+        """Show info about image."""
+        return f'<Review image_id={self.image_id} text={self.url} item_id={self.item_id}>'
 
 
 def connect_to_db(flask_app, db_uri="postgresql:///rentals", echo=True):

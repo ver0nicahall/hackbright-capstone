@@ -18,12 +18,12 @@ def create_item(item_name, description, price, num_likes, num_views, street_addr
         price=price,
         num_likes=num_likes,
         num_views=num_views,
-        street_addres=street_address,
+        street_address=street_address,
         city=city,
         state=state,
         zipcode=zipcode,
         available=available,
-        user_id=user_id
+        user=user
     )
     return item
 
