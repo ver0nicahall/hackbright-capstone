@@ -1,29 +1,3 @@
 __pycache__
 env
 
-admin=User(email='admin@test.com', password='admin')
-guest = User(email='guest@test.com', password='guest')
-db.session.add(admin)
-db.session.add(guest)
-db.session.commit()
-users = User.query.all()
-
-item2 = Item(item_name='hat', description='a very cool hat', price=5, street_address='123 Main St', city='Sunnyvale', state='CA', zipcode='94512', num_likes=0, num_views=0, available=False, user_id=2)
-item1 = Item(item_name='dress', description='dress up!', price=10, street_address='123 Main St', city='Sunnyvale', state='CA', zipcode='94512', num_likes=0, num_views=0, available=False, user_id=1)
-db.session.add(item1)
-db.session.add(item2)
-db.session.commit()
-items = Item.query.all()
-
-rental1 = Rental(order_date=datetime.strptime("2022-04-06", "%Y-%m-%d"), start_date=datetime.strptime("2022-05-06", "%Y-%m-%d"), due_date=datetime.strptime("2022-05-10", "%Y-%m-%d"), rental_total=10.50, item_id=1, lender_id=1, renter_id=2)
-rental2 = Rental(order_date=datetime.strptime("2022-02-06", "%Y-%m-%d"), start_date=datetime.strptime("2022-05-03", "%Y-%m-%d"), due_date=datetime.strptime("2022-05-10", "%Y-%m-%d"), rental_total=50.50, item_id=2, lender_id=2, renter_id=1)
-db.session.add(rental1)
-db.session.add(rental2)
-db.session.commit()
-
-print statements:
-print(rentals[0].renter_id)
-print(rentals[0].lender_id)
-print(rentals[0].item_id)
-print(rentals[0].renter)
-print(rentals[0].lender)

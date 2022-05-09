@@ -1,0 +1,41 @@
+[
+    {
+        "item_name": "Red shirt",
+       "description": "Size small. In almost new condition! Fits true to size.",
+       "price": 6,
+       "num_likes": 0,
+       "num_views": 0,
+       "street_address": "250 South 2nd Street",
+       "city": "San Jose",
+       "state": "CA",
+       "zipcode": "95113",
+       "available": true
+    },
+    {
+        "item_name": "Green hoodie",
+       "description": "Very comfy and cozy!",
+       "price": 8,
+       "num_likes": 0,
+       "num_views": 0,
+       "street_address": "250 South 2nd Street",
+       "city": "San Jose",
+       "state": "CA",
+       "zipcode": "95113",
+       "available": true
+    },
+    {
+        "item_name": "black band tee",
+       "description": "Hard to find! Wear to all your favorite concerts.",
+       "price": 12,
+       "num_likes": 0,
+       "num_views": 0,
+       "street_address": "250 South 2nd Street",
+       "city": "San Jose",
+       "state": "CA",
+       "zipcode": "95113",
+       "available": true
+    },
+    {
+
+    }
+]
