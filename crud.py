@@ -1,6 +1,6 @@
 """CRUD operations."""
 
-from model import db, User, Item, Rental, connect_to_db
+from model import db, User, Item, Rental, Image, Review, Message, connect_to_db
 
 def create_user(email, password):
     """Create and return a new user."""
@@ -39,6 +39,12 @@ def create_rental(order_date, start_date, num_days, rental_total, lender, renter
         item=item
     )
     return rental
+
+def create_image(url, item):
+
+    image = Image(url=url, item=item)
+
+    return image
 
 if __name__ == "__main__":
     from server import app
