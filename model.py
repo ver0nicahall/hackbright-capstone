@@ -63,7 +63,7 @@ class Rental(db.Model):
     rental_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
     order_date = db.Column(db.DateTime, nullable=False) #when the rental was made
     start_date = db.Column(db.DateTime, nullable=False) #date the rental is supposed to start
-    due_date = db.Column(db.DateTime, nullable=False) #date the rental needs to be returned
+    num_days = db.Column(db.Integer, nullable=False) #number of days to rent the item
     rental_total = db.Column(db.Float, nullable=False)
 
     #foreign keys

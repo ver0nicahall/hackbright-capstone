@@ -27,12 +27,12 @@ def create_item(item_name, description, price, num_likes, num_views, street_addr
     )
     return item
 
-def create_rental(order_date, start_date, due_date, rental_total, lender, renter, item):
+def create_rental(order_date, start_date, num_days, rental_total, lender, renter, item):
 
     rental = Rental(
         order_date = order_date,
         start_date = start_date,
-        due_date = due_date,
+        num_days = num_days,
         rental_total=rental_total,
         lender=lender,
         renter=renter,
