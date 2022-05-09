@@ -2,12 +2,15 @@
 
 from model import db, User, Item, Rental, Image, Review, Message, connect_to_db
 
+#users
 def create_user(email, password):
     """Create and return a new user."""
 
     user = User(email=email, password=password)
 
     return user
+
+#items
 
 def create_item(item_name, description, price, num_likes, num_views, street_address, city, state, zipcode, available, user):
     """Create and return a new item listing."""
@@ -27,6 +30,7 @@ def create_item(item_name, description, price, num_likes, num_views, street_addr
     )
     return item
 
+#rentals 
 def create_rental(order_date, start_date, num_days, rental_total, lender, renter, item):
 
     rental = Rental(
@@ -40,6 +44,7 @@ def create_rental(order_date, start_date, num_days, rental_total, lender, renter
     )
     return rental
 
+#images
 def create_image(url, item):
 
     image = Image(url=url, item=item)
