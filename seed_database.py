@@ -34,7 +34,7 @@ for n in range(1, 11):
     user = crud.create_user(email, password)
     #add user to database
     users_in_db.append(user)
-    model.db.session.add(user)
+    # model.db.session.add(user)
 
     #for each user, create 5 items
     for n in range (1, 6):
@@ -43,9 +43,17 @@ for n in range(1, 11):
         name = (choice(colors) + ' ' + choice(adjs) + ' ' + choice(articles))
 
         item = crud.create_item(name, 'test description', randint(1, 20), 0, 0, '123 main st', 'sunnyvale', 'CA', '94085', True, user)
+
+        #for each item, create 2 images
+        for n in range (1, 3):
+            image = crud.create_image('https://dodo.ac/np/images/thumb/8/80/Mabel_NH.png/150px-Mabel_NH.png', item) #placeholder image
+            #add images to database
+            model.db.session.add(image)
+
         #add item to database
         items_in_db.append(item)
-        model.db.session.add(item)
+        # model.db.session.add(item)
+
 
 model.db.session.add_all(users_in_db)
 model.db.session.add_all(items_in_db)
@@ -56,10 +64,6 @@ for n in range(1, 11):
     random_item = choice(items_in_db)
     random_lender = choice(users_in_db)
     random_renter = choice(users_in_db)
-
-    print(random_lender, ' lent ', random_item, ' to ', random_renter)
-    print(random_lender.email)
-    print(random_item.price)
 
     #dates
     order_date = datetime.strptime("2022-05-01", "%Y-%m-%d")
