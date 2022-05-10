@@ -141,7 +141,7 @@ class Image(db.Model):
 
     def __repr__(self):
         """Show info about image."""
-        return f'<Review image_id={self.image_id} text={self.url} item_id={self.item_id}>'
+        return f'<Image image_id={self.image_id} text={self.url} item_id={self.item_id}>'
 
 
 def connect_to_db(flask_app, db_uri="postgresql:///rentals", echo=True):
