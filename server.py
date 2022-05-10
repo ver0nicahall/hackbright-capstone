@@ -16,6 +16,15 @@ def homepage():
 
     return render_template("homepage.html")
 
+@app.route("/signup")
+def show_signup():
+    pass
+
+@app.route("/login")
+def show_login():
+    pass
+
+
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(host="0.0.0.0", debug=True)

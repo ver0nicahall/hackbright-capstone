@@ -2,11 +2,10 @@
 {% block title %}Cloop: Clothes the Loop{% endblock %}
 
 {% block body %}
-  <h1>Welcome to Cloop!</h1>
+  <!-- React components mounted here -->
+  <div id="app"></div>
+{% endblock %}
 
-  <h2>Navigation</h2>
-  <ul>
-    <li><a href="/signup">Sign Up</a></li>
-    <li><a href="/login">Log In</a></li>
-  </ul>
+{% block js %}
+  <script src="/static/js/homepage.jsx" type="text/jsx"></script>
 {% endblock %}
