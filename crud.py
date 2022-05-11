@@ -10,6 +10,12 @@ def create_user(email, password):
 
     return user
 
+def get_user_by_email(email):
+    """Return a single user."""
+
+    return User.query.filter(User.email == email).first()
+
+
 #items
 
 def create_item(item_name, description, price, num_likes, num_views, street_address, city, state, zipcode, available, user):

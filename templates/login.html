@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Cloop: Login{% endblock %}
+
+{% block body %}
+  <!-- React components mounted here -->
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+  {% endwith %}
+
+  <div id="login-div"></div>
+{% endblock %}
+
+{% block js %}
+  <script src="/static/js/login.jsx" type="text/jsx"></script>
+{% endblock %}
