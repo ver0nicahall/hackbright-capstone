@@ -4,7 +4,11 @@
 {% block body %}
   <!-- React components mounted here -->
   <div id="marketplace-container"></div>
-<h1> Marketplace!!!! to be updated </h1>
+  <div id="marketplace-listings">
+    {% for item in items %}
+      <li>{{ item.item_name }}</li>
+    {% endfor %}
+  </div>
 
 {% endblock %}
 

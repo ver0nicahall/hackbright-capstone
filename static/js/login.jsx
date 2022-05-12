@@ -12,7 +12,7 @@ function Login() {
               <p> <input type="submit" /> </p>
           </form>
 
-
+          <div>Don't have an account yet? <a href="/signup">Join us!</a></div>
       </div>
     );
   }

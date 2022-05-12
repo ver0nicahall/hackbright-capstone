@@ -11,7 +11,7 @@ function Signup() {
               </p>
               <p> <input type="submit" /> </p>
           </form>
-
+          <div>Already have an account? <a href="/login">Login!</a></div>
 
       </div>
     );

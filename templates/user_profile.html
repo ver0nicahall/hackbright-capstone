@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Cloop: Profile{% endblock %}
+
+{% block body %}
+  <!-- React components mounted here -->
+  <div id="user-div"></div>
+  <h2>{{ user.email }}</h2>
+  <ul>
+      {% for item in user.items %}
+        <li>
+            <a href="/marketplace">{{ item.item_name }}</a>
+            load photo here and make it a link
+        </li>
+      {% endfor %}
+  </ul>
+
+{% endblock %}
+
+{% block js %}
+  <script src="/static/js/userProfile.jsx" type="text/jsx"></script>
+{% endblock %}

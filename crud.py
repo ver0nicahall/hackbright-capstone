@@ -15,6 +15,11 @@ def get_user_by_email(email):
 
     return User.query.filter(User.email == email).first()
 
+def get_user_by_id(user_id):
+    """Return a single user by id."""
+
+    return User.query.get(user_id)
+
 
 #items
 
@@ -35,6 +40,20 @@ def create_item(item_name, description, price, num_likes, num_views, street_addr
         user=user
     )
     return item
+
+def get_all_items():
+    """Returns all items in database,"""
+
+    return Item.query.all()
+
+def get_items_by_user(email):
+    """Returns all items owned by user."""
+
+    #find user
+    user = User.query.filter(User.email == email).first()
+
+    return Item.query,filter(Item.user_id == user.id)
+
 
 #rentals 
 def create_rental(order_date, start_date, num_days, rental_total, lender, renter, item):

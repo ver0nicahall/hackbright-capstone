@@ -96,7 +96,9 @@ def view_marketplace():
     if "user_email" not in session:
         return redirect("/login")
 
-    return render_template("marketplace.html")
+    items = crud.get_all_items()
+
+    return render_template("marketplace.html", items=items)
 
 @app.route("/create_listing", methods=["GET", "POST"])
 def create_listing():
@@ -140,8 +142,26 @@ def create_listing():
         db.session.add(listing)
         db.session.commit()
 
-        #redirect to new listing page 
+        #redirect to new listing page - need to change it from marketplace
         return redirect('/marketplace')
+
+@app.route("/my_profile")
+def show_my_profile():
+    """Show my profile view."""
+
+    #retrieve own profile using cookie
+    user = crud.get_user_by_email(session["user_email"])
+
+    return render_template("user_profile.html", user=user)
+
+@app.route("/user_profile/<user_id>")
+def show_user(user_id):
+    """Show details on a particular user."""
+
+    #retrieve user
+    user = crud.get_user_by_id(user_id)
+
+    return render_template("user_profile.html", user=user)
         
 
 if __name__ == "__main__":
