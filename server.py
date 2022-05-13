@@ -3,12 +3,15 @@
 from flask import (Flask, render_template, request, flash, session, redirect)
 from model import connect_to_db, db
 import crud 
+from datetime import datetime
 
 from jinja2 import StrictUndefined
 
 app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
+
+#Welcome####################################################################################################
 
 @app.route("/")
 def homepage():
@@ -20,6 +23,8 @@ def homepage():
         return redirect("/marketplace")
 
     return render_template("homepage.html")
+
+#Login/Signup####################################################################################################
 
 @app.route("/signup")
 def show_signup():
@@ -78,6 +83,9 @@ def login_user():
         session['user_email'] = email
         #redirect to marketplace
         return redirect('/marketplace')
+
+
+#Goodbye####################################################################################################
   
 @app.route("/logout")
 def logout_user():
@@ -87,6 +95,9 @@ def logout_user():
     flash("You've successfully been logged out!")
 
     return redirect("/")
+
+
+#View marketplace#############################################################################################
 
 @app.route("/marketplace")
 def view_marketplace():
@@ -99,6 +110,8 @@ def view_marketplace():
     items = crud.get_all_items()
 
     return render_template("marketplace.html", items=items)
+
+#Add listing to marketplace######################################################################################
 
 @app.route("/create_listing", methods=["GET", "POST"])
 def create_listing():
@@ -145,6 +158,39 @@ def create_listing():
         #redirect to new listing page - need to change it from marketplace
         return redirect('/marketplace')
 
+#View item###################################################################################
+
+@app.route("/items/<item_id>")
+def show_item(item_id):
+    """Show details on a particular listing."""
+
+    #retrieve item
+
+    item = crud.get_item_by_id(item_id)
+
+    return render_template("item_details.html", item=item)
+
+#Add booking################################################################################
+
+@app.route("/create_rental")
+def create_rental():
+
+    num_days = int(request.form["num_days"])
+    renter = crud.get_user_by_email(session["user_email"])
+    item = crud.get_item_by_id()
+    
+    rental = crud.create_rental(
+        datetime.date(datetime.now),
+        start_date,
+        num_days,
+        rental_total,
+        lender,
+        renter,
+        item
+        )
+
+#View user profile############################################################################
+
 @app.route("/my_profile")
 def show_my_profile():
     """Show my profile view."""
@@ -154,7 +200,7 @@ def show_my_profile():
 
     return render_template("user_profile.html", user=user)
 
-@app.route("/user_profile/<user_id>")
+@app.route("/users/<user_id>")
 def show_user(user_id):
     """Show details on a particular user."""
 
@@ -162,7 +208,7 @@ def show_user(user_id):
     user = crud.get_user_by_id(user_id)
 
     return render_template("user_profile.html", user=user)
-        
+
 
 if __name__ == "__main__":
     connect_to_db(app)

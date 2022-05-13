@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ item.item_name }} - Details{% endblock %}
+
+{% block body %}
+<div id="item-details">
+    <h1>{{ item.item_name }}</h1>
+    <p>Posted by: <a href="/users/{{ item.user.user_id }}">{{ item.user.email }}</a></p>
+
+    <div id="item-images"> {% for image in item.images %}
+      <image src="{{image.url}}"/>
+      {% endfor %}
+    </div>
+    <p id="item-description">
+        {{ item.description }}
+    </p>
+    <p> Item price: {{ item.price }} per day</p>
+</div>
+
+<div id="booking-div">
+  booking form goes here
+</div>
+
+{% endblock %}
+
+{% block js %}
+  <script src="/static/js/bookingForm.jsx" type="text/jsx"></script>
+{% endblock %}

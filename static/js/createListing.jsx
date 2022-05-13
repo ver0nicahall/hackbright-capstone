@@ -4,7 +4,10 @@ function CreateListing() {
           <h1>New Listing</h1>
           <form action="/create_listing" method="POST" id="listing-form">
               <h3>Item Info</h3>
-              <p>Photos: (upload image thing here)</p>
+              <p>Photos: <form action="/upload-image" method="post" enctype="multipart/form-data">
+                  <input type="file" name="my-image"/>
+                  <input type="submit"/>
+                  </form></p>
               <p>Title <input type="text" name="item_name"/></p>
               <p>Description <textarea name="description" id="listing-form"/></p>
               <div class="price">Price: <input type="text" name="price"/></div>

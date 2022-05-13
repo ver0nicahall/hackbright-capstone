@@ -5,9 +5,14 @@
   <!-- React components mounted here -->
   <div id="marketplace-container"></div>
   <div id="marketplace-listings">
-    {% for item in items %}
-      <li>{{ item.item_name }}</li>
-    {% endfor %}
+    <ul>
+      {% for item in items %}
+        <li>
+            <a href="/items/{{ item.item_id }}">{{ item.item_name }}</a>
+            load photo here and make it a link to listing
+        </li>
+      {% endfor %}
+    </ul>
   </div>
 
 {% endblock %}

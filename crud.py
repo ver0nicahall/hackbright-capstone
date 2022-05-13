@@ -54,6 +54,11 @@ def get_items_by_user(email):
 
     return Item.query,filter(Item.user_id == user.id)
 
+def get_item_by_id(item_id):
+    """Returns all items in database,"""
+
+    return Item.query.get(item_id)
+
 
 #rentals 
 def create_rental(order_date, start_date, num_days, rental_total, lender, renter, item):
