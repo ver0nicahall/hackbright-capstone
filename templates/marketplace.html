@@ -9,11 +9,6 @@
       {% for item in items %}
         <li>
             <a href="/items/{{ item.item_id }}">{{ item.item_name }}</a>
-              {% for image in item.images %}
-
-                {{ image }}
-
-              {% endfor %}
         </li>
       {% endfor %}
     </ul>
