@@ -3,9 +3,16 @@
 from flask import (Flask, render_template, request, flash, session, redirect)
 from model import connect_to_db, db
 import crud 
+import os
+import cloudinary.uploader
 from datetime import datetime
 
 from jinja2 import StrictUndefined
+
+#cloudinary keys
+CLOUDINARY_KEY = os.environ["CLOUDINARY_KEY"]
+CLOUDINARY_SECRET = os.environ['CLOUDINARY_SECRET']
+CLOUD_NAME = "cloop"
 
 app = Flask(__name__)
 app.secret_key = "dev"
@@ -26,63 +33,58 @@ def homepage():
 
 #Login/Signup####################################################################################################
 
-@app.route("/signup")
-def show_signup():
-    """View signup page."""
 
-    return render_template("signup.html")
-
-@app.route("/signup", methods=["POST"])
+@app.route("/signup", methods=["GET", "POST"])
 def signup_user():
     """Signs a user into our database."""
 
+    if request.method == "GET":
+        return render_template("signup.html")
+    else: 
+        email = request.form["email"]
+        password = request.form["password"]
+
+        #if user with this account already exists:
+        if (crud.get_user_by_email(email)):
+            flash('Error: An account with that email already exists.')
+        else:
+            #create user using crud function 
+            user = crud.create_user(email, password)
+            db.session.add(user)
+            db.session.commit()
+            flash('Account created! You may now login.')
+        
+        #redirect to login page
+        return redirect('/login')
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login_user():
+   """Logs in a user."""
+
+   if request.method == "GET":
+       return render_template("login.html")
+   else:
+    #get email and password from form
     email = request.form["email"]
     password = request.form["password"]
 
-    #if user with this account already exists:
-    if (crud.get_user_by_email(email)):
-        flash('Error: An account with that email already exists.')
-    else:
-        #create user using crud function 
-        user = crud.create_user(email, password)
-        db.session.add(user)
-        db.session.commit()
-        flash('Account created! You may now login.')
+    #retrieve user
+    user = crud.get_user_by_email(email)
     
-    #redirect to login page
-    return redirect('/login')
-
-@app.route("/login")
-def show_login():
-   """View login page."""
-   
-   return render_template("login.html")
-
-
-@app.route("/login", methods=["POST"])
-def login_user():
-   """Logs in a user."""
-   
-   #get email and password from form
-   email = request.form["email"]
-   password = request.form["password"]
-
-   #retrieve user
-   user = crud.get_user_by_email(email)
-   
-   #if user does not exist or password is in correct
-   if not user or user.password != password:
-       #flash error message
-       flash("The email or password you entered was incorrect.")
-       #redirect to login page
-       return redirect('/login')
-   else:
-        #flash success message
-        flash('You have successfully been logged in!')
-        #set session cookie
-        session['user_email'] = email
-        #redirect to marketplace
-        return redirect('/marketplace')
+    #if user does not exist or password is in correct
+    if not user or user.password != password:
+        #flash error message
+        flash("The email or password you entered was incorrect.")
+        #redirect to login page
+        return redirect('/login')
+    else:
+            #flash success message
+            flash('You have successfully been logged in!')
+            #set session cookie
+            session['user_email'] = email
+            #redirect to marketplace
+            return redirect('/marketplace')
 
 
 #Goodbye####################################################################################################
@@ -136,12 +138,23 @@ def create_listing():
         state = request.form["state"]
         zipcode = request.form["zipcode"]
         available = bool(request.form["available"])
+        #get form data for image
+        image_file = request.files["listing-image"]
+
+        #make cloudinary API request:
+        result = cloudinary.uploader.upload(
+            image_file, 
+            api_key=CLOUDINARY_KEY,
+            api_secret=CLOUDINARY_SECRET,
+            cloud_name = CLOUD_NAME)
+
+        url = result['secure_url']
         
         #fetch user from session email 
         user = crud.get_user_by_email(session["user_email"])
 
         #create new listing and add to database
-        listing = crud.create_item(
+        item = crud.create_item(
             item_name, description, 
             price, 0, 0,
             street_address,
@@ -152,7 +165,14 @@ def create_listing():
             user
         )
 
-        db.session.add(listing)
+        #create an image and add to database
+        image = crud.create_image(url, item)
+
+
+        db.session.add(item)
+        db.session.commit()
+
+        db.session.add(image)
         db.session.commit()
 
         #redirect to new listing page - need to change it from marketplace
@@ -172,22 +192,22 @@ def show_item(item_id):
 
 #Add booking################################################################################
 
-@app.route("/create_rental")
-def create_rental():
+# @app.route("/create_rental")
+# def create_rental():
 
-    num_days = int(request.form["num_days"])
-    renter = crud.get_user_by_email(session["user_email"])
-    item = crud.get_item_by_id()
-    
-    rental = crud.create_rental(
-        datetime.date(datetime.now),
-        start_date,
-        num_days,
-        rental_total,
-        lender,
-        renter,
-        item
-        )
+#     num_days = int(request.form["num_days"])
+#     renter = crud.get_user_by_email(session["user_email"])
+#     item = crud.get_item_by_id()
+
+#     rental = crud.create_rental(
+#         datetime.date(datetime.now),
+#         start_date,
+#         num_days,
+#         rental_total,
+#         lender,
+#         renter,
+#         item
+#         )
 
 #View user profile############################################################################
 

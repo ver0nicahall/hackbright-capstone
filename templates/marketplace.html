@@ -9,7 +9,11 @@
       {% for item in items %}
         <li>
             <a href="/items/{{ item.item_id }}">{{ item.item_name }}</a>
-            load photo here and make it a link to listing
+              {% for image in item.images %}
+
+                {{ image }}
+
+              {% endfor %}
         </li>
       {% endfor %}
     </ul>

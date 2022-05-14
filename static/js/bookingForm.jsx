@@ -11,7 +11,7 @@ function BookingForm() {
 
              </select>
              </p>
-              <input type="submit"></input>
+              <input type="submit" value="Book Item"></input>
           </form>
       </div>
     );
