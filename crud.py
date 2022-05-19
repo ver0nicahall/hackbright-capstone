@@ -1,6 +1,7 @@
 """CRUD operations."""
 
 from model import db, User, Item, Rental, Image, Review, Message, connect_to_db
+from sqlalchemy import update, delete
 
 #users
 def create_user(email, password):
@@ -42,7 +43,7 @@ def create_item(item_name, description, price, num_likes, num_views, street_addr
     return item
 
 def get_all_items():
-    """Returns all items in database,"""
+    """Returns all items in database."""
 
     return Item.query.all()
 
@@ -58,6 +59,17 @@ def get_item_by_id(item_id):
     """Returns all items in database,"""
 
     return Item.query.get(item_id)
+
+#update function here
+def update_item_by_id(item_id):
+    pass
+
+def delete_item_by_id(item_id):
+    """Deletes an item from database based on id. """
+
+    item_to_delete = Item.query.get(item_id)
+    db.session.delete(item_to_delete)
+    db.session.commit()
 
 
 #rentals 
