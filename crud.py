@@ -86,6 +86,12 @@ def create_rental(order_date, start_date, num_days, rental_total, lender, renter
     )
     return rental
 
+def get_rentals_by_user(user_id):
+    """Gets all rentals a user has made."""
+    user_rentals = Rental.query.filter()
+    
+    return user_rentals
+
 #images
 def create_image(url, item):
 
