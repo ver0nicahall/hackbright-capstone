@@ -93,7 +93,7 @@ def login_user():
 def logout_user():
     """Logs out a user."""
 
-    session["user_email"] = None
+    session.pop("user_email")
     flash("You've successfully been logged out!")
 
     return redirect("/")
@@ -175,8 +175,11 @@ def create_listing():
         db.session.add(image)
         db.session.commit()
 
+        #fetch new item id, redirect to url
+        item_id = item.item_id
+
         #redirect to new listing page - need to change it from marketplace
-        return redirect('/marketplace')
+        return redirect(f'/items/{item_id}')
 
 #View item###################################################################################
 
