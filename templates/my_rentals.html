@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Cloop: My Rentals{% endblock %}
+
+{% block body %}
+  <div id="user-div"></div>
+  <h2>{{ user.email }}'s Listings</h2>
+  <!-- React components mounted here -->
+  <div id="user-listings">
+    <ul>
+        {% for item in user.items %}
+          <li>
+              <a href="/items/{{ item.item_id }}">{{ item.item_name }}</a>
+          </li>
+        {% endfor %}
+        </ul>
+  </div>
+
+{% endblock %}
+
+{% block js %}
+{% endblock %}

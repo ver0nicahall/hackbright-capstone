@@ -6,7 +6,7 @@ function BookingForm() {
       <div id="booking-form">
           <h3>Book this item:</h3>
           <form action="/book" method="POST">
-             <p><label for="start">When would you like to book this item? </label> 
+             <p><label htmlFor="start">When would you like to book this item? </label> 
              <input type="date" id="start" name="rental-start" min={today} /> </p>
              <p>How long would you like to keep this item for?
              <select name="num_days" id="num_days" form="num_days-form">

@@ -3,6 +3,7 @@
 {% block title %}{{ item.item_name }} - Details{% endblock %}
 
 {% block body %}
+<div id="navbar-container"></div>
 <div id="item-details">
     <h1>{{ item.item_name }}</h1>
     <p>Posted by: <a href="/users/{{ item.user.user_id }}">{{ item.user.email }}</a></p>
@@ -25,4 +26,5 @@
 
 {% block js %}
   <script src="/static/js/bookingForm.jsx" type="text/jsx"></script>
+  <script src="/static/js/navbar.jsx" type="text/jsx"></script>
 {% endblock %}

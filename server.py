@@ -1,6 +1,6 @@
 """Server for online rental marketplace"""
 
-from flask import (Flask, render_template, request, flash, session, redirect)
+from flask import (Flask, render_template, request, flash, session, redirect, jsonify)
 from model import connect_to_db, db
 import crud 
 import os
@@ -93,7 +93,7 @@ def login_user():
 def logout_user():
     """Logs out a user."""
 
-    session.pop("user_email")
+    session.clear()
     flash("You've successfully been logged out!")
 
     return redirect("/")
@@ -107,11 +107,44 @@ def view_marketplace():
 
     #make sure user is logged in 
     if "user_email" not in session:
+        #redirect user to login page
         return redirect("/login")
 
     items = crud.get_all_items()
 
     return render_template("marketplace.html", items=items)
+
+@app.route("/api/all_items")
+def get_all_listings():
+    """Return all listings as JSON."""
+
+    items = crud.get_all_items()
+    itemsJSON = []
+
+    #parse each item into a json object
+    for item in items:
+        item_images = []
+        for image in item.images:
+            item_images.append(image.url)
+        itemJSON = {
+            'item_id': item.item_id,
+            'item_name': item.item_name,
+            'description': item.description,
+            'price': item.price,
+            'num_likes': item.num_likes,
+            'num_views': item.num_views,
+            'street_address': item.street_address,
+            'city': item.city,
+            'state': item.state,
+            'zipcode': item.zipcode,
+            'available': item.available,
+            'item_images': item_images
+        }
+        itemsJSON.append(itemJSON)
+    
+    #return json
+    return jsonify(itemsJSON)
+
 
 #Add listing to marketplace######################################################################################
 
@@ -194,6 +227,14 @@ def show_item(item_id):
     return render_template("item_details.html", item=item)
 
 #Add booking################################################################################
+
+@app.route("/my_rentals")
+def view_rentals():
+    """Show all of a user's previous rentals"""
+
+    rentals = crud.get_rentals_by_user(session["user_email"])
+
+    return render_template("my_rentals.html", rentals=rentals)
 
 # @app.route("/create_rental")
 # def create_rental():

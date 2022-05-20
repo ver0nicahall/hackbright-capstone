@@ -5,15 +5,7 @@
   <!-- React components mounted here -->
   <div id="navbar-container"></div>
   <div id="marketplace-container"></div>
-  <div id="marketplace-listings">
-    <ul>
-      {% for item in items %}
-        <li>
-            <a href="/items/{{ item.item_id }}">{{ item.item_name }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+  <div id="marketplace-listings">Marketplace listings go here</div>
 
 {% endblock %}
 

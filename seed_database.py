@@ -45,7 +45,7 @@ for n in range(1, 11):
         item = crud.create_item(name, 'test description', randint(1, 20), 0, 0, '123 main st', 'sunnyvale', 'CA', '94085', True, user)
 
         #for each item, create 2 images
-        for n in range (1, 3):
+        for n in range (1, 2):
             image = crud.create_image('https://dodo.ac/np/images/thumb/8/80/Mabel_NH.png/150px-Mabel_NH.png', item) #placeholder image
             #add images to database
             model.db.session.add(image)
