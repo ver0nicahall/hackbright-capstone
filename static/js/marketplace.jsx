@@ -1,5 +1,14 @@
+function Listing(props) {
+  return (
+    <div className="listing">
+      <a key={props.item.item_id} href={`/items/${props.item.item_id}`}><img src={props.item.item_images[0]} /></a>
+    </div>
+  )
+}
+
 function Marketplace() {
   const [items, setItems] = React.useState([]);
+  const [term, setTerm] = React.useState('');
 
   React.useEffect(() => {
     fetch('/api/all_items')
@@ -16,14 +25,47 @@ function Marketplace() {
   const itemsImages = []; 
 
   for (const item of items) {
-    itemsImages.push(<div><a key={item.item_id} href={`/items/${item.item_id}`}><img src={item.item_images[0]} className="preview"/></a></div>)
+    itemsImages.push( <Listing item={item} />)
   }
 
 //event listener on change or on submit 
+  function showListings(evt) {
+    evt.preventDefault();
+    alert(`you are searching for ${term}`)
+    let filtered_items = []
+    //filter results by search term
+    for (const item in items) {
+      if ((item[item_name].includes(term))) {
+        console.log(item[item_name])
+      }
+    }
+    console.log(items)
+    //repopulate page
+
+  }
+
+  //callback function for change 
+  function searchChange(evt) {
+    evt.preventDefault();
+
+    let searchTerm = evt.target.value
+    setTerm(searchTerm)
+    console.log(term)
+
+  }
 
   return (
     <div id="app">
         <h1>Cloop Marketplace</h1>
+        <form action="/" method="POST" onSubmit={showListings}>
+          <input type="text" name="search-term" onChange={searchChange}></input> <label htmlFor="Search by:"> </label>
+          <select name="search-by" id="search-by">
+            <option value="zipcode">Location (Zip Code)</option>
+            <option value="name">Name</option>
+          </select>
+          <span><input type="submit" value="Search"></input></span>
+        </form>
+
         <div id="listings-container">
           {itemsImages}
         </div>
