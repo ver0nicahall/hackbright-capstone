@@ -45,7 +45,7 @@ class Item(db.Model):
 
     #rentals = a list of rentals this item has been associated with
     #reviews = a list of reviews this item is associated with
-    #images = a list of images associates with this iem 
+    #images = a list of images associates with this item 
 
     #foreign key
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))

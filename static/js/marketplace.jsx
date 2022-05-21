@@ -1,7 +1,7 @@
 function Listing(props) {
   return (
     <div className="listing">
-      <a key={props.item.item_id} href={`/items/${props.item.item_id}`}><img src={props.item.item_images[0]} /></a>
+      <a key={props.item.item_id} href={`/items/${props.item.item_id}`}><img class="preview" src={props.item.item_images[0]} /></a>
     </div>
   )
 }
@@ -34,13 +34,27 @@ function Marketplace() {
     alert(`you are searching for ${term}`)
     let filtered_items = []
     //filter results by search term
-    for (const item in items) {
-      if ((item[item_name].includes(term))) {
-        console.log(item[item_name])
+    //if searching by name:
+    let searchType = evt.target.searchby.value;
+    //if searching by name:
+    if (searchType === "name") {
+      for (const item of items) {
+        if ((item["item_name"].includes(term))) {
+          console.log(item["item_name"]);
+          filtered_items.push(item);
+        }
       }
     }
-    console.log(items)
-    //repopulate page
+    
+    console.log("filtered items: ", filtered_items)
+    
+    //TODO: error handling (why is it returning undefined?)
+    // if (filtered_items.length === 0) {
+    //   filtered_items = ["No items found!"]
+    // }
+
+    //repopulate page with filtered items 
+    setItems(filtered_items)
 
   }
 
@@ -59,7 +73,7 @@ function Marketplace() {
         <h1>Cloop Marketplace</h1>
         <form action="/" method="POST" onSubmit={showListings}>
           <input type="text" name="search-term" onChange={searchChange}></input> <label htmlFor="Search by:"> </label>
-          <select name="search-by" id="search-by">
+          <select name="searchby" id="searchby">
             <option value="zipcode">Location (Zip Code)</option>
             <option value="name">Name</option>
           </select>

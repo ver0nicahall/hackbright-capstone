@@ -1,6 +1,6 @@
 function CreateListing() {
     return (
-      <div>
+      <div id="new-listing">
           <h1>New Listing</h1>
           <form action="/create_listing" method="POST" enctype="multipart/form-data" id="listing-form">
               <h3>Item Info</h3>

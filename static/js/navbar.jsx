@@ -1,11 +1,11 @@
 function NavBar() {
     return (
         <div className="navbar">
-            <div className="navbar-left">
+            <span id="navbar-left">
                 <a href="/marketplace">Marketplace</a> | <a href="/create_listing">Create Listing</a> | 
-            </div> 
-            <div className="navbar-right"> <a href="/my_profile">My Profile</a> |  My Account | <a href="/logout">Logout</a>
-            </div>
+            </span> 
+            <span id="navbar-right"> <a href="/my_profile">My Profile</a> |  My Account | <a href="/logout">Logout</a>
+            </span>
         </div>
     )
 }

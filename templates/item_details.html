@@ -9,13 +9,13 @@
     <p>Posted by: <a href="/users/{{ item.user.user_id }}">{{ item.user.email }}</a></p>
 
     <div id="item-image"> {% for image in item.images %}
-      <image src="{{image.url}}"/>
+      <image class="fullview" src="{{image.url}}"/>
       {% endfor %}
     </div>
     <p id="item-description">
-        {{ item.description }}
+       <b>Description:</b> {{ item.description }}
     </p>
-    <p> Item price: ${{ item.price }} per day</p>
+    <p> <b>Item price:</b> ${{ item.price }} per day</p>
 </div>
 
 <div id="booking-div">

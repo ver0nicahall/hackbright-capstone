@@ -145,7 +145,6 @@ def get_all_listings():
     #return json
     return jsonify(itemsJSON)
 
-
 #Add listing to marketplace######################################################################################
 
 @app.route("/create_listing", methods=["GET", "POST"])
@@ -272,7 +271,6 @@ def show_user(user_id):
     user = crud.get_user_by_id(user_id)
 
     return render_template("user_profile.html", user=user)
-
 
 if __name__ == "__main__":
     connect_to_db(app)

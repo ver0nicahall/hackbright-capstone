@@ -4,6 +4,11 @@
     border: 2px
 }
 
+.fullview {
+    height: 600px;
+    width: 400px;
+}
+
 #listings-container {
     display: grid;
     grid-template-columns: 3fr 3fr 3fr 3fr;
@@ -15,4 +20,8 @@
 .listing {
     display: inline-block;
     border: 2px solid black;
+}
+
+#booking-form {
+    border: 2px black
 }
