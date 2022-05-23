@@ -195,6 +195,7 @@ def create_listing():
             city,
             state,
             zipcode,
+            deleted,
             available,
             user
         )
@@ -222,10 +223,44 @@ def show_item(item_id):
     """Show details on a particular listing."""
 
     #retrieve item
-
     item = crud.get_item_by_id(item_id)
 
+    #prevent user from accessing deleted item
+    if item.deleted == True:
+        flash('Uh oh! That item is no longer available.')
+        #redirect them back to the marketplace
+        return redirect('/marketplace')
+
     return render_template("item_details.html", item=item)
+
+@app.route("/api/items/<item_id>")
+def show_itemJSON(item_id):
+    """Show details on a particular listing as JSON. """
+
+    #retrieve item
+    item = crud.get_item_by_id(item_id)
+    item_images = []
+    for image in item.images:
+        item_images.append(image.url)
+
+    itemJSON = {
+        'item_id': item.item_id,
+        'item_name': item.item_name,
+        'description': item.description,
+        'price': item.price,
+        'num_likes': item.num_likes,
+        'num_views': item.num_views,
+        'street_address': item.street_address,
+        'city': item.city,
+        'state': item.state,
+        'zipcode': item.zipcode,
+        'deleted': item.deleted,
+        'available': item.available,
+        'item_images': item_images
+    }
+
+    return jsonify(itemJSON)
+
 
 #Delete Item#################################################################################
 @app.route("/items/<item_id>", methods=["POST"])
@@ -234,6 +269,7 @@ def delete_item(item_id):
 
     #retrieve item
     crud.delete_item_by_id(item_id)
+    flash('Your item has been succesfully deleted!')
 
     #redirect to marketplace
     return redirect('/marketplace')
@@ -287,7 +323,7 @@ def show_user(user_id):
 
 @app.route("/api/users/<user_id>/items")
 def show_user_items(user_id):
-    """Show all items a particular user has."""
+    """Show all items a particular user has as JSON."""
 
     #retrieve user
     user = crud.get_user_by_id(user_id)
@@ -310,6 +346,7 @@ def show_user_items(user_id):
             'city': item.city,
             'state': item.state,
             'zipcode': item.zipcode,
+            'deleted': item.deleted,
             'available': item.available,
             'item_images': item_images
         }

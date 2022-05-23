@@ -8,7 +8,8 @@
     {% for item in user.items %}
       {% if item.deleted == False %}
     <div>
-      <a href="/items/{{ item.item_id }}"><img class="listing" src={{ item.images[0].url }} /></a>
+      <a href="/items/{{ item.item_id }}"><img class="listing preview" src={{ item.images[0].url }} /></a>
+      <p> {{ item.item_name }}</p>
     </div>
       {% endif %}
     {% endfor %}

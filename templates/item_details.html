@@ -4,7 +4,7 @@
 
 {% block body %}
 <div id="navbar-container"></div>
-<div id="item-details">
+<div id="item-container">
     <h1>{{ item.item_name }}</h1>
     <p>Posted by: <a href="/users/{{ item.user.user_id }}">{{ item.user.email }}</a></p>
 
@@ -12,16 +12,24 @@
       <image class="fullview" src="{{image.url}}"/>
       {% endfor %}
     </div>
-    <p id="item-description">
-       <b>Description:</b> {{ item.description }}
-    </p>
-    <p id="item-price""> <b>Item price:</b> ${{ item.price }} per day</p>
-    <p><b>Location:</b> {{item.city}} {{item.state}} , {{ item.zipcode}}</p>
+    <div id="item-details">
+      <p id="item-description">
+        <b>Description:</b> {{ item.description }}
+      </p>
+      <p id="item-price"> <b>Item price:</b> ${{ item.price }} per day</p>
+      <p><b>Location:</b> {{item.city}} {{item.state}} , {{ item.zipcode}}</p>
+    </div>
 </div>
-<div id = "delete-container">
-  Don't want this item anymore? <input type="button" id="delete-button" value="Delete this Listing">
-</div>
-<div id="booking-div"></div>
+{% if item.user.email == session["user_email"] %}
+  <div id = "delete-container">
+    <form action="/items/{{ item.item_id}}" method="POST">
+      Don't want this item anymore? <button type="submit" id="delete-button" value="{{ item.item_id }}"> Delete this listing </button>
+    </form>
+  </div>
+
+{% else %}
+  <div id="booking-div"></div>
+{% endif %}
 
 {% endblock %}
 

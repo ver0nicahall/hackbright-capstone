@@ -66,10 +66,10 @@ def update_item_by_id(item_id):
     pass
 
 def delete_item_by_id(item_id):
-    """Deletes an item from database based on id. """
+    """Deletes an item from website but keeps it in database based on id. """
 
     item_to_delete = Item.query.get(item_id)
-    db.session.delete(item_to_delete)
+    item_to_delete.deleted = True
     db.session.commit()
 
 

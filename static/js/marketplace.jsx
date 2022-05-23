@@ -2,6 +2,7 @@ function Listing(props) {
   return (
     <div className="listing">
       <a key={props.item.item_id} href={`/items/${props.item.item_id}`}><img className="preview" src={props.item.item_images[0]} /></a>
+      <div>{props.item.item_name}</div>
     </div>
   )
 }
@@ -31,7 +32,7 @@ function Marketplace() {
 //event listener on change or on submit 
   function showListings(evt) {
     evt.preventDefault();
-    alert(`you are searching for ${term}`)
+    // alert(`you are searching for ${term}`)
     let filtered_items = []
     //filter results by search term
     //if searching by name:
@@ -40,6 +41,15 @@ function Marketplace() {
     if (searchType === "name") {
       for (const item of items) {
         if ((item["item_name"].includes(term))) {
+          console.log(item["item_name"]);
+          filtered_items.push(item);
+        }
+      }
+    }
+
+    if (searchType === "zipcode") {
+      for (const item of items) {
+        if ((item["zipcode"] === term)) {
           console.log(item["item_name"]);
           filtered_items.push(item);
         }
@@ -74,8 +84,8 @@ function Marketplace() {
         <form action="/" method="POST" onSubmit={showListings}>
           <input type="text" name="search-term" placeholder="Search:" onChange={searchChange}></input> <label htmlFor="Search by:"> </label>
           <select name="searchby" id="searchby">
-            <option value="zipcode">Location (Zip Code)</option>
             <option value="name">Name</option>
+            <option value="zipcode">Location (Zip Code)</option>
           </select>
           <span><input type="submit" value="Search"></input></span>
         </form>
