@@ -41,6 +41,7 @@ class Item(db.Model):
     city = db.Column(db.String(50))
     state = db.Column(db.String(2))
     zipcode = db.Column(db.String(10))
+    deleted = db.Column(db.Boolean, nullable=False)
     available = db.Column(db.Boolean, nullable=False)
 
     #rentals = a list of rentals this item has been associated with

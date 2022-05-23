@@ -1,7 +1,7 @@
 function Listing(props) {
   return (
     <div className="listing">
-      <a key={props.item.item_id} href={`/items/${props.item.item_id}`}><img class="preview" src={props.item.item_images[0]} /></a>
+      <a key={props.item.item_id} href={`/items/${props.item.item_id}`}><img className="preview" src={props.item.item_images[0]} /></a>
     </div>
   )
 }
@@ -72,7 +72,7 @@ function Marketplace() {
     <div id="app">
         <h1>Cloop Marketplace</h1>
         <form action="/" method="POST" onSubmit={showListings}>
-          <input type="text" name="search-term" onChange={searchChange}></input> <label htmlFor="Search by:"> </label>
+          <input type="text" name="search-term" placeholder="Search:" onChange={searchChange}></input> <label htmlFor="Search by:"> </label>
           <select name="searchby" id="searchby">
             <option value="zipcode">Location (Zip Code)</option>
             <option value="name">Name</option>

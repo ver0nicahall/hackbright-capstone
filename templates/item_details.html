@@ -15,12 +15,13 @@
     <p id="item-description">
        <b>Description:</b> {{ item.description }}
     </p>
-    <p> <b>Item price:</b> ${{ item.price }} per day</p>
+    <p id="item-price""> <b>Item price:</b> ${{ item.price }} per day</p>
+    <p><b>Location:</b> {{item.city}} {{item.state}} , {{ item.zipcode}}</p>
 </div>
-
-<div id="booking-div">
-  booking form goes here
+<div id = "delete-container">
+  Don't want this item anymore? <input type="button" id="delete-button" value="Delete this Listing">
 </div>
+<div id="booking-div"></div>
 
 {% endblock %}
 

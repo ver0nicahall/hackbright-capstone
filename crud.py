@@ -24,7 +24,7 @@ def get_user_by_id(user_id):
 
 #items
 
-def create_item(item_name, description, price, num_likes, num_views, street_address, city, state, zipcode, available, user):
+def create_item(item_name, description, price, num_likes, num_views, street_address, city, state, zipcode, deleted, available, user):
     """Create and return a new item listing."""
 
     item = Item(
@@ -37,6 +37,7 @@ def create_item(item_name, description, price, num_likes, num_views, street_addr
         city=city,
         state=state,
         zipcode=zipcode,
+        deleted=deleted,
         available=available,
         user=user
     )
@@ -53,7 +54,7 @@ def get_items_by_user(email):
     #find user
     user = User.query.filter(User.email == email).first()
 
-    return Item.query,filter(Item.user_id == user.id)
+    return Item.query.filter(Item.user_id == user.user_id)
 
 def get_item_by_id(item_id):
     """Returns all items in database,"""

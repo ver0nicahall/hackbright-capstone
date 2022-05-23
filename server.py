@@ -137,6 +137,7 @@ def get_all_listings():
             'city': item.city,
             'state': item.state,
             'zipcode': item.zipcode,
+            'deleted': item.deleted,
             'available': item.available,
             'item_images': item_images
         }
@@ -169,6 +170,7 @@ def create_listing():
         city = request.form["city"]
         state = request.form["state"]
         zipcode = request.form["zipcode"]
+        deleted = False
         available = bool(request.form["available"])
         #get form data for image
         image_file = request.files["listing-image"]
@@ -225,6 +227,17 @@ def show_item(item_id):
 
     return render_template("item_details.html", item=item)
 
+#Delete Item#################################################################################
+@app.route("/items/<item_id>", methods=["POST"])
+def delete_item(item_id):
+    """Delete a particular listing."""
+
+    #retrieve item
+    crud.delete_item_by_id(item_id)
+
+    #redirect to marketplace
+    return redirect('/marketplace')
+
 #Add booking################################################################################
 
 @app.route("/my_rentals")
@@ -271,6 +284,40 @@ def show_user(user_id):
     user = crud.get_user_by_id(user_id)
 
     return render_template("user_profile.html", user=user)
+
+@app.route("/api/users/<user_id>/items")
+def show_user_items(user_id):
+    """Show all items a particular user has."""
+
+    #retrieve user
+    user = crud.get_user_by_id(user_id)
+    items = crud.get_items_by_user(user.email)
+    itemsJSON = []
+
+   #parse each item into a json object
+    for item in items:
+        item_images = []
+        for image in item.images:
+            item_images.append(image.url)
+        itemJSON = {
+            'item_id': item.item_id,
+            'item_name': item.item_name,
+            'description': item.description,
+            'price': item.price,
+            'num_likes': item.num_likes,
+            'num_views': item.num_views,
+            'street_address': item.street_address,
+            'city': item.city,
+            'state': item.state,
+            'zipcode': item.zipcode,
+            'available': item.available,
+            'item_images': item_images
+        }
+        itemsJSON.append(itemJSON, user=user)
+        
+    #return json
+    return jsonify(itemsJSON)
+
 
 if __name__ == "__main__":
     connect_to_db(app)

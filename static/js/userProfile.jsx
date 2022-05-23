@@ -6,14 +6,30 @@ function Listing(props) {
   )
 }
 
-function UserProfile() {
+function UserProfile(props) {
+  const[items, setItems] = React.useState([]);
+
   //fetch user's items 
-  //load using react 
+  React.useEffect(() => {
+    fetch(`/api/users/${props.user.user_id}/items`)
+     .then((response) => response.json())
+     .then((data) => {
+       setItems(data)
+     })
+  }, []);
+
+  const itemsImages = [];
+
+  for (const item of items) {
+    itemsImages.push( <Listing item={item} />)
+  }
+   
 
     return (
-      <div>
-      </div>
+        <div id="listings-container">
+          {itemsImages}
+        </div>
     );
   }
   
-  ReactDOM.render(<UserProfile />, document.getElementById('user-div'));
+  ReactDOM.render(<UserProfile user={user}/>, document.getElementById('user-listings'));

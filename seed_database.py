@@ -42,7 +42,7 @@ for n in range(1, 11):
         #create a random name
         name = (choice(colors) + ' ' + choice(adjs) + ' ' + choice(articles))
 
-        item = crud.create_item(name, 'test description', randint(1, 20), 0, 0, '123 main st', 'sunnyvale', 'CA', '94085', True, user)
+        item = crud.create_item(name, 'test description', randint(1, 20), 0, 0, '123 main st', 'sunnyvale', 'CA', '94085', False, True, user)
 
         #for each item, create 2 images
         for n in range (1, 2):
