@@ -12,6 +12,7 @@ Coming soon!!!
 ## Technologies
 
 **Tech Stack:**
+
 <b>Backend:</b> Python, Flask, PostgreSQL, JSON, SQLAlchemy, Python unittest module (to be integrated)
 <b>Frontend:</b> JavaScript, React, AJAX, Jinja2, Bootstrap, HTML5, CSS, Bootstrap
 <b>APIS:</b> Cloudinary photo upload, Shippo API (to be integrated)
