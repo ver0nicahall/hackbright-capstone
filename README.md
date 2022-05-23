@@ -7,14 +7,16 @@
 Cloop is the love child of [Veronica Hall](https://www.linkedin.com/in/ver0nicahall/)'s passion for keeping things out of landfills combined with her experience in the fashion and retail industries. This is her first project ever!
 
 ## Deployment
-Coming soon!!!
+Coming soon; stay tuned!!
 
 ## Technologies
 
 **Tech Stack:**
 
 <b>Backend:</b> Python, Flask, PostgreSQL, JSON, SQLAlchemy, Python unittest module (to be integrated)
+
 <b>Frontend:</b> JavaScript, React, AJAX, Jinja2, Bootstrap, HTML5, CSS, Bootstrap
+
 <b>APIS:</b> Cloudinary photo upload, Shippo API (to be integrated)
 
 Cloop is an app built on a Flask server with a PostgreSQL database, with SQLAlchemy as the ORM. The front end templating uses Jinja2, the HTML was built using Bootstrap, and the Javascript AJAX to interact with the backend. Images are uploaded using Cloudinary API. Servers will be tested via the Python testunit module. 
@@ -32,4 +34,7 @@ To run Cloop:
 (to be updated)
 
 ## For Version 2.0:
-(to be updated)
+- **Messages:** Ability for users to message each other with questions re: items
+- **Ratings** After a rental is complete, a user has the ability to leave a rating and comments on their experience with the item for future borrowers to see. 
+- **Likes/Views** Ability for users to "like" or bookmark items and view them later. Tracker for likes and views, ability to sort by most popular items.
+- **Password hashing:** Passwords will be hashed before being saved to the database
