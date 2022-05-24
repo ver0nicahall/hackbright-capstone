@@ -355,6 +355,13 @@ def show_user_items(user_id):
     #return json
     return jsonify(itemsJSON)
 
+#Messages###################################################################################
+@app.route("/my_messages")
+def show_messages():
+    """Show messages of logged in user."""
+    user = crud.get_user_by_email(session["user_email"])
+
+    return render_template("my_messages.html", user=user)
 
 if __name__ == "__main__":
     connect_to_db(app)

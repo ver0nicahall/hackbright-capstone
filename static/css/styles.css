@@ -1,12 +1,13 @@
 .preview {
     height: 200px;
     width: 150px;
-    border: 2px
+    border: 2px 
 }
 
 .fullview {
-    height: 400px;
-    width: 250px;
+    height: 600px;
+    width: 400px;
+    border: 2px solid black;
 }
 
 #listings-container, #user-listings {
@@ -23,5 +24,5 @@
 }
 
 #booking-form {
-    border: 2px black
+    border: 2px solid black
 }

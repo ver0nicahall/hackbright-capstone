@@ -7,9 +7,16 @@ function Listing(props) {
   )
 }
 
+
 function Marketplace() {
   const [items, setItems] = React.useState([]);
   const [term, setTerm] = React.useState('');
+
+  //event handler to handle no items found
+  function handleNoItemsFound() {
+    document.querySelector("#listings-container").innerText = "ERROR: No items were found!"
+  }
+  
 
   React.useEffect(() => {
     fetch('/api/all_items')
@@ -56,15 +63,15 @@ function Marketplace() {
       }
     }
     
-    console.log("filtered items: ", filtered_items)
-    
     //TODO: error handling (why is it returning undefined?)
-    // if (filtered_items.length === 0) {
-    //   filtered_items = ["No items found!"]
-    // }
 
     //repopulate page with filtered items 
     setItems(filtered_items)
+
+    // if no items found 
+    if (filtered_items.length === 0) {
+      handleNoItemsFound();
+    }
 
   }
 

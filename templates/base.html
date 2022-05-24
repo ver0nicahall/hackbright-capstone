@@ -23,12 +23,18 @@
         </ul>
       {% endif %}
     {% endwith %}
+
+    {% if "user_email" in session %}
+      <div id="navbar-container"></div>
+    {% endif %}
+  
     {% block body %}{% endblock %}
 
     {% block after_body %}{% endblock %}
 
     <script src="/static/js/app.js"></script>
+    <script src="/static/js/navbar.jsx" type="text/jsx"></script>
     <!-- Include any page-specific JavaScript using this block. -->
-    {% block js %}{% endblock %}
+    {% block js %} {% endblock %}
   </body>
 </html>

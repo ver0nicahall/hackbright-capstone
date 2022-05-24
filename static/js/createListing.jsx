@@ -6,7 +6,6 @@ function CreateListing() {
               <h3>Item Info</h3>
               <p>Photos:
                   <input type="file" name="listing-image" accept="image/*" required/>
-                  <input type="submit"/>
                 </p>
               <p>Title <input type="text" name="item_name"/></p>
               <p>Description <textarea name="description" id="listing-form"/></p>
