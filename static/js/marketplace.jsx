@@ -1,3 +1,4 @@
+//Listing component for the marketplace
 function Listing(props) {
   return (
     <div className="listing">
@@ -33,7 +34,10 @@ function Marketplace() {
   const itemsImages = []; 
 
   for (const item of items) {
-    itemsImages.push( <Listing item={item} />)
+    
+    if (item.deleted === false) {
+      itemsImages.push( <Listing item={item} />)
+    }
   }
 
 //event listener on change or on submit 
@@ -47,7 +51,7 @@ function Marketplace() {
     //if searching by name:
     if (searchType === "name") {
       for (const item of items) {
-        if ((item["item_name"].includes(term))) {
+        if ((item["item_name"].includes(term)) && item["deleted"] === "false") {
           console.log(item["item_name"]);
           filtered_items.push(item);
         }
