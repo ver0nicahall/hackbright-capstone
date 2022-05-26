@@ -1,4 +1,4 @@
-"""Server for online rental marketplace"""
+"""Server for online clothing rental marketplace"""
 
 from flask import (Flask, render_template, request, flash, session, redirect, jsonify)
 from model import connect_to_db, db
@@ -110,8 +110,10 @@ def view_marketplace():
         #redirect user to login page
         return redirect("/login")
 
+    #rertrieve all items from database 
     items = crud.get_all_items()
 
+    #render
     return render_template("marketplace.html", items=items)
 
 @app.route("/api/all_items")

@@ -18,23 +18,21 @@ function Marketplace() {
     document.querySelector("#listings-container").innerText = "ERROR: No items were found!"
   }
   
-
+  //AJAX request to API to fetch all items 
   React.useEffect(() => {
     fetch('/api/all_items')
      .then((response) => response.json())
      .then((data) => {
        setItems(data)
      })
+    .catch(() => {
+      alert('Nothing was found!');
+    })
   }, []);
-
-  // if (items.length === 0) {
-  //   return <p>Loading...</p>
-  // }
 
   const itemsImages = []; 
 
-  for (const item of items) {
-    
+  for (const item of items) {    
     if (item.deleted === false) {
       itemsImages.push( <Listing item={item} />)
     }
@@ -51,7 +49,7 @@ function Marketplace() {
     //if searching by name:
     if (searchType === "name") {
       for (const item of items) {
-        if ((item["item_name"].includes(term)) && item["deleted"] === "false") {
+        if ((item["item_name"].includes(term))) {
           console.log(item["item_name"]);
           filtered_items.push(item);
         }
@@ -72,12 +70,19 @@ function Marketplace() {
     //repopulate page with filtered items 
     setItems(filtered_items)
 
+
     // if no items found 
     if (filtered_items.length === 0) {
       handleNoItemsFound();
     }
-
   }
+
+  //event listener to restore all items back to normal 
+  function restoreAllListings() {
+    
+  }
+
+  //attach event listener to button 
 
   //callback function for change 
   function searchChange(evt) {
@@ -98,7 +103,8 @@ function Marketplace() {
             <option value="name">Name</option>
             <option value="zipcode">Location (Zip Code)</option>
           </select>
-          <span><input type="submit" value="Search"></input></span>
+          <span><input type="submit" value="Search"></input></span> 
+            <span><button type="button" onClick={restoreAllListings}> Restore Listings </button></span>
         </form>
 
         <div id="listings-container">

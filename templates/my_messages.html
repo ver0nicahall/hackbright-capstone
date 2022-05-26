@@ -2,7 +2,10 @@
 {% block title %}My Messages{% endblock %}
 
 {% block body %}
-  messages to {{ user.email }} go here
+    <div id="messages-container">
+        <h2>My Messages</h2>
+        messages to {{ user.email }}
+    </div>
 {% endblock %}
 
 {% block js %}

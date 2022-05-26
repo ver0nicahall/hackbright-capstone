@@ -5,7 +5,7 @@
 {% block body %}
 <div id="navbar-container"></div>
 <div id="item-container">
-    <h1>{{ item.item_name }}</h1>
+    <h1>{{ item.item_name }}</h1> <div id="like_button_container"></div>
     <p>Posted by: <a href="/users/{{ item.user.user_id }}">{{ item.user.email }}</a></p>
 
     <div id="item-image"> {% for image in item.images %}
@@ -14,7 +14,7 @@
     </div>
     <div id="item-details">
       <p id="item-description">
-        <b>Description:</b> {{ item.description }}
+        <b>Description:</b> {{ item.description }} 
       </p>
       <p id="item-price"> <b>Item price:</b> ${{ item.price }} per day</p>
       <p><b>Location:</b> {{item.city}} {{item.state}} , {{ item.zipcode}}</p>
@@ -22,18 +22,23 @@
 </div>
 {% if item.user.email == session["user_email"] %}
   <div id = "delete-container">
+    <button>Edit Listing</button>
+    <div id="edit-details">Edit listing goes here</div>
     <form action="/items/{{ item.item_id}}" method="POST">
-      Don't want this item anymore? <button type="submit" id="delete-button" value="{{ item.item_id }}"> Delete this listing </button>
+    <button type="submit" id="delete-button" value="{{ item.item_id }}"> Delete this listing </button>
     </form>
   </div>
 
 {% else %}
   <div id="booking-div"></div>
+  <div id="contact-div"></div>
 {% endif %}
 
 {% endblock %}
 
 {% block js %}
   <script src="/static/js/bookingForm.jsx" type="text/jsx"></script>
+  <script src="/static/js/contactForm.jsx" type="text/jsx"></script>
+  <script src="/static/js/likeButton.jsx" type="text/jsx"></script>
   <script src="/static/js/navbar.jsx" type="text/jsx"></script>
 {% endblock %}
