@@ -4,7 +4,7 @@ function CreateListing() {
           <h1>New Listing</h1>
           <form action="/create_listing" method="POST" encType="multipart/form-data" id="listing-form">
               <h3>Item Info</h3>
-              <p>Photos:
+              <p>Photos: 
                   <input type="file" name="listing-image" accept="image/*" required/>
                 </p>
               <p>Title <input type="text" name="item_name"/></p>

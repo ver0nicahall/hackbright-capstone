@@ -12,18 +12,29 @@
       <image class="fullview" src="{{image.url}}"/>
       {% endfor %}
     </div>
+    {% if item.user.email == session["user_email"] %}
+    <div id="edit-container">
+      <button id="edit-button">Edit Listing</button>
+      <div id="edit-details">
+        <form id="edit-form">
+          <p><b>Description:</b> <textarea name="description" id="description-field">{{ item.description }}</textarea></p>
+          <p><b>Price:</b> <input type="text" name="price" id="price-field" value="{{ item.price }}" /></p>
+          <p><b>Location:</b> <input type="text" name="city" id="city-field" value="{{ item.city }}" /> <input type="text" name="state" id="state-field" value="{{ item.state }}"/> <input type="text" id="zipcode-field" name="zipcode" value="{{ item.zipcode }}"/> </p>
+          <p><input type="submit" value="Save Changes"/></p>
+        </form>
+      </div>
+    </div>
+    {% endif %}
     <div id="item-details">
       <p id="item-description">
-        <b>Description:</b> {{ item.description }} 
+        <b>Description:</b> <span id="description-span">{{ item.description }}</span>
       </p>
-      <p id="item-price"> <b>Item price:</b> ${{ item.price }} per day</p>
-      <p><b>Location:</b> {{item.city}} {{item.state}} , {{ item.zipcode}}</p>
+      <p id="item-price"> <b>Price:</b> $<span id="price-span">{{ item.price }}</span> per day</p>
+      <p><b>Location:</b> <span id="city-span">{{item.city}}</span> <span id="state-span">{{item.state}}</span> , <span id="zipcode-span">{{ item.zipcode}}</span></p>
     </div>
 </div>
 {% if item.user.email == session["user_email"] %}
   <div id = "delete-container">
-    <button>Edit Listing</button>
-    <div id="edit-details">Edit listing goes here</div>
     <form action="/items/{{ item.item_id}}" method="POST">
     <button type="submit" id="delete-button" value="{{ item.item_id }}"> Delete this listing </button>
     </form>

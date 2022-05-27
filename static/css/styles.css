@@ -26,3 +26,7 @@
 #booking-form {
     border: 2px solid black
 }
+
+#edit-details {
+    display: none;
+}

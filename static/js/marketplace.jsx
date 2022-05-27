@@ -77,13 +77,6 @@ function Marketplace() {
     }
   }
 
-  //event listener to restore all items back to normal 
-  function restoreAllListings() {
-    
-  }
-
-  //attach event listener to button 
-
   //callback function for change 
   function searchChange(evt) {
     evt.preventDefault();
@@ -102,9 +95,9 @@ function Marketplace() {
           <select name="searchby" id="searchby">
             <option value="name">Name</option>
             <option value="zipcode">Location (Zip Code)</option>
+            <option value="keyword">Keyword</option>
           </select>
           <span><input type="submit" value="Search"></input></span> 
-            <span><button type="button" onClick={restoreAllListings}> Restore Listings </button></span>
         </form>
 
         <div id="listings-container">

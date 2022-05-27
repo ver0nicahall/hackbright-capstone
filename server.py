@@ -265,17 +265,37 @@ def show_itemJSON(item_id):
 
 
 #Delete Item#################################################################################
-@app.route("/items/<item_id>", methods=["POST"])
+@app.route("/items/<item_id>", methods=["POST", "PATCH"])
 def delete_item(item_id):
-    """Delete a particular listing."""
+    """Edit or update a particular listing."""
+    if request.method == "POST":
+        #retrieve item
+        crud.delete_item_by_id(item_id)
+        flash('Your item has been succesfully deleted!')
 
-    #retrieve item
-    crud.delete_item_by_id(item_id)
-    flash('Your item has been succesfully deleted!')
+        #redirect to marketplace
+        return redirect('/marketplace')
+    if request.method == "PATCH":
+        #retrieve item to be edited
+        item = crud.get_item_by_id(item_id)
 
-    #redirect to marketplace
-    return redirect('/marketplace')
+        #get form inputs, update items
+        item.description = request.json.get("description")
+        item.price = int(request.json.get("price"))
+        item.city = request.json.get("city")
+        item.state = request.json.get("state")
+        item.zipcode = request.json.get("zipcode")
 
+        db.session.add(item)
+        db.session.commit()
+        
+        return jsonify({
+            'description': item.description,
+            'price': item.price,
+            'city': item.city,
+            'state': item.state,
+            'zipcode': item.zipcode,
+        })
 #Add booking################################################################################
 
 @app.route("/my_rentals")
