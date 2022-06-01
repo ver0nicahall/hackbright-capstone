@@ -1,7 +1,10 @@
-.preview {
-    height: 200px;
-    width: 150px;
-    border: 2px 
+.listing-preview {
+    width: 50%;
+    border: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    
 }
 
 .fullview {
@@ -29,4 +32,26 @@
 
 #edit-details {
     display: none;
+}
+
+#navbar-left {
+    float: left;
+    margin: 4px
+}
+
+#navbar-right {
+    float: right;
+    margin: 4px
+}
+
+#banner {
+    float: left;
+}
+
+#searchForm {
+    float: right;
+}
+
+.listing-title {
+    text-align: center;
 }

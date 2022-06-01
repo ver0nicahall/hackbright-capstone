@@ -1,12 +1,17 @@
 function NavBar() {
     return (
-        <div className="navbar">
-            <span id="navbar-left">
-                <a href="/marketplace">Marketplace</a> | <a href="/create_listing">Create Listing</a> | 
-            </span> 
-            <span id="navbar-right"> <a href="/my_profile">My Profile</a> |  <a href="/my_messages">Messages</a> | <a href="/logout">Logout</a>
-            </span>
-        </div>
+        <nav className="navbar navbar-style">
+            <div className="col">
+                <span id="navbar-left">
+                    <a href="/marketplace">Marketplace</a> | <a href="/create_listing">Create Listing</a> | <a href="/my_profile">My Profile</a> 
+                </span> 
+            </div>
+            <div className="col">
+                <span id="navbar-right">
+                    <a href="/my_messages">Messages</a> | <a href="/logout">Logout</a>
+                </span>
+            </div>
+        </nav>
     )
 }
 

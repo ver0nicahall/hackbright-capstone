@@ -1,9 +1,19 @@
 //Listing component for the marketplace
 function Listing(props) {
+  function handleMouseEnter(evt) {
+    console.log(`This costs $${props.item.price}.`)
+    evt.target.style.background = 'red';
+  }
+
+  function handleMouseLeave(evt) {
+    console.log('The mouse is leaving now!')
+    evt.target.style.background = 'none';
+  }
+
   return (
     <div className="listing">
-      <a key={props.item.item_id} href={`/items/${props.item.item_id}`}><img className="preview" src={props.item.item_images[0]} /></a>
-      <div>{props.item.item_name}</div>
+      <a key={props.item.item_id} href={`/items/${props.item.item_id}`}><img className="listing-preview" src={props.item.item_images[0]} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} /></a>
+      <div className="listing-title">{props.item.item_name}</div>
     </div>
   )
 }
@@ -89,17 +99,22 @@ function Marketplace() {
 
   return (
     <div id="app">
-        <h1>Cloop Marketplace</h1>
-        <form action="/" method="POST" onSubmit={showListings}>
-          <input type="text" name="search-term" placeholder="Search:" onChange={searchChange}></input> <label htmlFor="Search by:"> </label>
-          <select name="searchby" id="searchby">
-            <option value="name">Name</option>
-            <option value="zipcode">Location (Zip Code)</option>
-            <option value="keyword">Keyword</option>
-          </select>
-          <span><input type="submit" value="Search"></input></span> 
-        </form>
-
+      <div className='marketplace-head'>
+        <div className="row">
+          <div id="banner"><h1>Cloop Marketplace</h1></div>
+          <div id="searchForm">
+            <form action="/" method="POST" onSubmit={showListings} id="searchForm">
+              <input type="text" name="search-term" placeholder="Search for:" onChange={searchChange}></input> <label htmlFor="Search by:"> </label>
+              <select name="searchby" id="searchby">
+                <option value="name">Name</option>
+                <option value="zipcode">Location (Zip Code)</option>
+                <option value="keyword">Keyword</option>
+              </select>
+              <span><input type="submit" value="Search"></input></span> 
+            </form>
+          </div>
+        </div>
+      </div>
         <div id="listings-container">
           {itemsImages}
         </div>
