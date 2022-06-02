@@ -1,11 +1,11 @@
 function NavBar() {
     return (
-        <nav className="navbar navbar-style">
+        <nav id="navbar" className="navbar navbar-style navbar-fixed-top">
             <div className="col">
                 <span id="navbar-left">
                     <a href="/marketplace">Marketplace</a> | <a href="/create_listing">Create Listing</a> | <a href="/my_profile">My Profile</a> 
                 </span> 
-            </div>
+            </div> 
             <div className="col">
                 <span id="navbar-right">
                     <a href="/my_messages">Messages</a> | <a href="/logout">Logout</a>

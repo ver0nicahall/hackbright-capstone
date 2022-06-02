@@ -2,14 +2,14 @@
 {% block title %}Cloop: Profile{% endblock %}
 
 {% block body %}
-  <h2>{{ user.email }}'s Listings</h2>
+  <div id="profile-header">{{ user.email }}'s Listings</div>
   <!-- React components mounted here -->
   <div id="user-listings">
     {% for item in user.items %}
       {% if item.deleted == False %}
-    <div>
+    <div class="listing">
       <a href="/items/{{ item.item_id }}"><img class="listing-preview" src={{ item.images[0].url }} /></a>
-      <p className="listing-title"> {{ item.item_name }}</p>
+      <div class="listing-title"> {{ item.item_name }} | ${{ item.price }}</div>
     </div>
       {% endif %}
     {% endfor %}

@@ -1,7 +1,27 @@
+//Event handler to make navbar sticky
+
+//when user scrolls, execute function to make navbar stick 
+window.onscroll = function() {makeSticky()};
+
+//get navbar
+let navbarContainer = document.querySelector('#navbar-container')
+//get offset position of navbar
+let sticky = navbarContainer.offsetTop;
+
+function makeSticky() {
+    //when the page scrolls down
+    if (window.pageYOffset >= sticky) {
+        //add sticky class to navbar
+        navbar.classList.add("sticky")
+    } else {
+        navbar.classList.remove("sticky");
+    }
+}
+
 //Event handler to show edit form if user clicks edit button
-editDetails = document.querySelector('#edit-details')
-editButton = document.querySelector('#edit-button')
-itemDetails = document.querySelector('#item-details');
+let editDetails = document.querySelector('#edit-details')
+let editButton = document.querySelector('#edit-button')
+let itemDetails = document.querySelector('#item-details');
 
 //function to show edit form and hide description
 function showEditForm() {

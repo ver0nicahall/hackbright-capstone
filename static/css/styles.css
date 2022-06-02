@@ -1,3 +1,55 @@
+footer {
+    text-align: center;
+    margin: 2px;
+    background-color: blue;
+}
+
+/* fieldset */ 
+
+fieldset {
+    margin: 2em 0;
+    padding: 1em, 2em;
+    border: solid 1px #ccc;
+    border-radius: 6px;
+    min-width: 200px;
+}
+
+label {
+    display:block;
+    margin-top: 1em;
+}
+
+label:first-of-type {
+    margin-top: 0;
+}
+
+.radio label {
+    margin-top: 0;
+}
+
+/* inputs and text area */
+input {
+    padding: .5em;
+    border: solid 1px #999;
+
+}
+textarea {
+    min-height: 8em;
+    min-width: 100%;
+    padding: .5em;
+    border: solid 1px #999;
+}
+/* navbar */
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.sticky + .content {
+    padding-top: 60px;
+}
+
 .listing-preview {
     width: 50%;
     border: 2px;
@@ -15,17 +67,20 @@
 
 #listings-container, #user-listings {
     display: grid;
-    grid-template-columns: 3fr 3fr 3fr 3fr;
-    grid-gap: 20px;
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+    grid-gap: 10px;
     align-items: center;
     margin: 3px
 }
 
 .listing {
     display: inline-block;
-    border: 2px solid black;
+    
 }
 
+#profile-header {
+    text-align: center;
+}
 #booking-form {
     border: 2px solid black
 }
@@ -39,6 +94,10 @@
     margin: 4px
 }
 
+#navbar-center {
+    text-align: center;
+}
+
 #navbar-right {
     float: right;
     margin: 4px
@@ -46,6 +105,11 @@
 
 #banner {
     float: left;
+    text-align: center;
+}
+
+.banner {
+    text-align: center;
 }
 
 #searchForm {

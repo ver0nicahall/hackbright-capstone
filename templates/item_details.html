@@ -5,7 +5,7 @@
 {% block body %}
 <div id="navbar-container"></div>
 <div id="item-container">
-    <h1>{{ item.item_name }}</h1> <div id="like_button_container"></div>
+    <h1>{{ item.item_name }} <span id="like_button_container"></span></h1>
     <p>Posted by: <a href="/users/{{ item.user.user_id }}">{{ item.user.email }}</a></p>
 
     <div id="item-image"> {% for image in item.images %}
