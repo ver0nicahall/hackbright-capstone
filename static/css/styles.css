@@ -1,10 +1,52 @@
+/* general */
+body {
+    background-color: #F7E6D3;
+}
+
+/* login and signup */
+
+#login-box {
+    border: solid black 1px;
+    margin: auto;
+    padding: 10px;
+    width: 50%
+}
+
+.login-form {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+#signup-box {
+    border: solid black 1px;
+    margin: auto;
+    padding: 10px;
+    width: 50%
+}
+
+.signup-form {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.signup-form h1 {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+/* footer */
 footer {
     text-align: center;
     margin: 2px;
-    background-color: blue;
+    background-color: #D2D6C7;
 }
 
 /* fieldset */ 
+#booking-form {
+    border: 2px solid black
+}
 
 fieldset {
     margin: 2em 0;
@@ -27,7 +69,7 @@ label:first-of-type {
     margin-top: 0;
 }
 
-/* inputs and text area */
+                /* inputs and text area */
 input {
     padding: .5em;
     border: solid 1px #999;
@@ -39,6 +81,39 @@ textarea {
     padding: .5em;
     border: solid 1px #999;
 }
+
+                /* radio buttons*/
+
+.radio {
+    margin-bottom: 1em;
+}
+
+input[type="radio"] {
+    margin-left: 1.5em;
+    margin-right: 0;
+}
+
+input[type="radio"] + label {
+    display: inline-block;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+input[type="radio"]:first-of-type {
+    margin-left: 0;
+}
+
+/* submit button */
+
+input[type="submit"] {
+    padding: .5em 1em;
+    border-radius: 6px;
+    background-color: #AAAF99;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    font-size: .8em;
+}
+
 /* navbar */
 
 .sticky {
@@ -48,45 +123,6 @@ textarea {
 }
 .sticky + .content {
     padding-top: 60px;
-}
-
-.listing-preview {
-    width: 50%;
-    border: 2px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    
-}
-
-.fullview {
-    height: 600px;
-    width: 400px;
-    border: 2px solid black;
-}
-
-#listings-container, #user-listings {
-    display: grid;
-    grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
-    grid-gap: 10px;
-    align-items: center;
-    margin: 3px
-}
-
-.listing {
-    display: inline-block;
-    
-}
-
-#profile-header {
-    text-align: center;
-}
-#booking-form {
-    border: 2px solid black
-}
-
-#edit-details {
-    display: none;
 }
 
 #navbar-left {
@@ -103,19 +139,80 @@ textarea {
     margin: 4px
 }
 
-#banner {
-    float: left;
+/* images */
+.listing-preview {
+    width: 50%;
+    border: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 25%
+    
+}
+
+.fullview {
+    height: 600px;
+    width: 400px;
+    border: 2px solid black;
+}
+
+/* listings */
+#listings-container, #user-listings {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+    grid-gap: 10px;
+    align-items: center;
+    margin: 3px
+}
+
+.listing {
+    display: inline-block;
+    
+}
+
+#profile-header {
     text-align: center;
 }
+
+
+#edit-details {
+    display: none;
+}
+
 
 .banner {
     text-align: center;
-}
-
-#searchForm {
-    float: right;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    display: block;
 }
 
 .listing-title {
     text-align: center;
 }
+/* item details */
+
+#details-banner {
+    text-align: center;
+}
+
+/* #item-container {
+    display: flex;
+    justify-content: center;
+} */
+
+
+#item-image {
+    display: flex;
+    justify-content: center;
+}
+#posted-by {
+    text-align: center;
+}
+#delete-button {
+    margin: auto;
+    display: block;
+    width: 15%
+}
+/* search Form */

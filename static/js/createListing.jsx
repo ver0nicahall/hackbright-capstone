@@ -1,7 +1,7 @@
 function CreateListing() {
     return (
       <div id="new-listing">
-          <div className="banner">New Listing</div>
+          <div className="banner"><h2>New Listing</h2></div>
           <form action="/create_listing" method="POST" encType="multipart/form-data" id="listing-form">
             <fieldset>
               <label htmlFor="photos">Photos: </label>

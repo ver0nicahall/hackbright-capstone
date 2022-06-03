@@ -101,17 +101,21 @@ function Marketplace() {
     <div id="app">
       <div className='marketplace-head'>
         <div className="row">
-          <div id="banner"><h1>Cloop Marketplace</h1></div>
-          <div id="searchForm">
-            <form action="/" method="POST" onSubmit={showListings} id="searchForm">
-              <input type="text" name="search-term" placeholder="Search for:" onChange={searchChange}></input> <label htmlFor="Search by:"> </label>
-              <select name="searchby" id="searchby">
-                <option value="name">Name</option>
-                <option value="zipcode">Location (Zip Code)</option>
-                <option value="keyword">Keyword</option>
-              </select>
-              <span><input type="submit" value="Search"></input></span> 
-            </form>
+          <div class="col-9">
+            <div classname="banner">Cloop Marketplace</div>
+          </div>
+          <div class="col-3">
+            <div id="searchForm">
+              <form action="/" method="POST" onSubmit={showListings} id="searchForm">
+                <input type="text" name="search-term" placeholder="Search for:" onChange={searchChange}></input> <label htmlFor="Search by:"> </label>
+                <select name="searchby" id="searchby">
+                  <option value="name">Name</option>
+                  <option value="zipcode">Location (Zip Code)</option>
+                  <option value="keyword">Keyword</option>
+                </select>
+                <span><input type="submit" value="Search"></input></span> 
+              </form>
+            </div>
           </div>
         </div>
       </div>

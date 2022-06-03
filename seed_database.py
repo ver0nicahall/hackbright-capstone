@@ -27,6 +27,7 @@ items_in_db = []
 
 #create users and generate 10 fake items for each user
 for n in range(1, 11):
+    
     email=f'user{n}@test.com'
     password=f'test{n}'
 
