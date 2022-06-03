@@ -2,8 +2,13 @@
 * {
     font-family: "Verdana round"
 }
-body, #user-listings, #marketplace-container, #create-listing-container, #profile-header, #item-container {
+body, #app, #user-listings, #marketplace-container, #create-listing-container, #profile-header, #item-container {
     background-color: #F7E6D3;
+}
+
+/* homepage */
+#homepage-container {
+    text-align: center;
 }
 
 /* login and signup */
