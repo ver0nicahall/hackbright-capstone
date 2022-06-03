@@ -4,11 +4,11 @@ function BookingForm() {
 
     return (
       <div id="booking-form">
-          <h3>Book this item:</h3>
+          <h3 className="banner">Book this item:</h3>
           <form action="/book" method="POST">
              <p><label htmlFor="start">When would you like to book this item? </label> 
              <input type="date" id="start" name="rental-start" min={today} /> </p>
-             <p>How long would you like to keep this item for?
+             <p id="borrow-text">Borrow this item for 
              <select name="num_days" id="num_days" form="num_days-form">
              <option value="1">1</option>
              <option value="2">2</option>

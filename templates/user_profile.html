@@ -2,7 +2,7 @@
 {% block title %}Cloop: Profile{% endblock %}
 
 {% block body %}
-  <div id="profile-header">{{ user.email }}'s Listings</div>
+  <div class="banner" id="profile-header">{{ user.email }}'s Listings</div>
   <!-- React components mounted here -->
   <div id="user-listings">
     {% for item in user.items %}

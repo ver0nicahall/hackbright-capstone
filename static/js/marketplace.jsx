@@ -1,18 +1,19 @@
 //Listing component for the marketplace
 function Listing(props) {
-  function handleMouseEnter(evt) {
-    console.log(`This costs $${props.item.price}.`)
-    evt.target.style.background = 'red';
-  }
+  // hover effects i no longer need
+  // function handleMouseEnter(evt) {
+  //   console.log(`This costs $${props.item.price}.`)
+  //   evt.target.style.background = 'red';
+  // }
 
-  function handleMouseLeave(evt) {
-    console.log('The mouse is leaving now!')
-    evt.target.style.background = 'none';
-  }
+  // function handleMouseLeave(evt) {
+  //   console.log('The mouse is leaving now!')
+  //   evt.target.style.background = 'none';
+  // }
 
   return (
     <div className="listing">
-      <a key={props.item.item_id} href={`/items/${props.item.item_id}`}><img className="listing-preview" src={props.item.item_images[0]} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} /></a>
+      <a key={props.item.item_id} href={`/items/${props.item.item_id}`}><img className="listing-preview" src={props.item.item_images[0]} /></a>
       <div className="listing-title">{props.item.item_name}</div>
     </div>
   )
@@ -101,10 +102,10 @@ function Marketplace() {
     <div id="app">
       <div className='marketplace-head'>
         <div className="row">
-          <div class="col-9">
-            <div classname="banner">Cloop Marketplace</div>
+          <div className="col-9"> 
+            <div className="banner"><h2><b>Cloop Marketplace</b></h2></div>
           </div>
-          <div class="col-3">
+          <div className="col-3">
             <div id="searchForm">
               <form action="/" method="POST" onSubmit={showListings} id="searchForm">
                 <input type="text" name="search-term" placeholder="Search for:" onChange={searchChange}></input> <label htmlFor="Search by:"> </label>

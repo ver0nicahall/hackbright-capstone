@@ -1,5 +1,8 @@
 /* general */
-body {
+* {
+    font-family: "Verdana round"
+}
+body, #user-listings, #marketplace-container, #create-listing-container, #profile-header, #item-container {
     background-color: #F7E6D3;
 }
 
@@ -36,18 +39,36 @@ body {
     width: 50%;
     padding: 10px;
 }
+
 /* footer */
+
 footer {
     text-align: center;
     margin: 2px;
     background-color: #D2D6C7;
 }
 
-/* fieldset */ 
+/* booking form*/ 
+
 #booking-form {
-    border: 2px solid black
+    border: 2px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;s
+    margin-bottom: 0px;
+    width: 50%;
+    text-align: center;
 }
 
+#item-details {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    text-align: center;
+}
+
+
+/* fieldset and listing form*/ 
 fieldset {
     margin: 2em 0;
     padding: 1em, 2em;
@@ -77,9 +98,10 @@ input {
 }
 textarea {
     min-height: 8em;
-    min-width: 100%;
+    max-width: 50%;
     padding: .5em;
     border: solid 1px #999;
+
 }
 
                 /* radio buttons*/
@@ -103,6 +125,13 @@ input[type="radio"]:first-of-type {
     margin-left: 0;
 }
 
+input[name="search-term"] {
+    margin-bottom: 5px;
+}
+
+input[type="date"] {
+    margin-left: 5px;
+}
 /* submit button */
 
 input[type="submit"] {
@@ -114,8 +143,18 @@ input[type="submit"] {
     font-size: .8em;
 }
 
+.new-description {
+    margin-bottom: 1em;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
 /* navbar */
-
+#navbar {
+    background-color: #D2D6C7;
+}
 .sticky {
     position: fixed;
     top: 0;
@@ -136,10 +175,14 @@ input[type="submit"] {
 
 #navbar-right {
     float: right;
-    margin: 4px
+    margin: 4px;
 }
 
 /* images */
+img:hover {
+    filter: blur(1px);
+}
+
 .listing-preview {
     width: 50%;
     border: 2px;
@@ -153,7 +196,7 @@ input[type="submit"] {
 .fullview {
     height: 600px;
     width: 400px;
-    border: 2px solid black;
+    border-radius: 25%;
 }
 
 /* listings */
@@ -186,6 +229,8 @@ input[type="submit"] {
     margin-right: auto;
     width: 50%;
     display: block;
+    font-family: "Varela Round", "Arial", sans-serif;
+    font-weight: 800;
 }
 
 .listing-title {
@@ -194,7 +239,8 @@ input[type="submit"] {
 /* item details */
 
 #details-banner {
-    text-align: center;
+    font-family: "verdana round";
+    font-size: 45px;
 }
 
 /* #item-container {
@@ -216,3 +262,7 @@ input[type="submit"] {
     width: 15%
 }
 /* search Form */
+
+#searchby {
+    margin-right: 10px;
+}

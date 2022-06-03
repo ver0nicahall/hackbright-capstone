@@ -9,14 +9,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js" crossorigin></script>
     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    
+    <!-- Google fonts API-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
 
     <!-- CSS / Bootstrap styling -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link href="/static/css/styles.css" rel="stylesheet">
-
-    <!-- Google fonts API-->
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Tangerine">
     
     <!-- Cloudflare icons API-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
@@ -57,18 +56,21 @@
     <!-- Include any page-specific JavaScript using this block. -->
     {% block js %} {% endblock %}
   </body>
-  <footer>
-    <div class="social">
-      <a href="https://www.instagram.com/ver0snacks/"><i class="icon ion-social-instagram"></i></a>
-      <a href="https://www.linkedin.com/in/ver0nicahall/"><i class="icon ion-social-linkedin"></i></a>
-      <a href="https://github.com/ver0nicahall"><i class="icon ion-social-github"></i></a>
-    </div>
-    <p class="copyright">Veronica Hall © 2022</p>
-    <ul class="list-inline">
-        <li class="list-inline-item"><a href="#">Home</a></li>
-        <li class="list-inline-item"><a href="#">Services</a></li>
-        <li class="list-inline-item"><a href="#">About</a></li>
-        <li class="list-inline-item"><a href="#">Terms</a></li>
-        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-    </ul>
+  <div class="footer-basic">
+    <footer>
+      <div class="social">
+        <a href="https://www.instagram.com/ver0snacks/"><i class="icon ion-social-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/ver0nicahall/"><i class="icon ion-social-linkedin"></i></a>
+        <a href="https://github.com/ver0nicahall"><i class="icon ion-social-github"></i></a>
+      </div>
+      <p class="copyright">Veronica Hall © 2022</p>
+      <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">Home</a></li>
+          <li class="list-inline-item"><a href="#">Services</a></li>
+          <li class="list-inline-item"><a href="#">About</a></li>
+          <li class="list-inline-item"><a href="#">Terms</a></li>
+          <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+      </ul>
+    </footer>
+  </div>
 </html>

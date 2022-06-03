@@ -8,7 +8,7 @@ function NavBar() {
             </div> 
             <div className="col">
                 <span id="navbar-right">
-                    <a href="/my_messages">Messages</a> | <a href="/logout">Logout</a>
+                    My Rentals | <a href="/my_messages">Messages</a> | <a href="/logout">Logout</a>
                 </span>
             </div>
         </nav>
