@@ -15,9 +15,9 @@ Coming soon; stay tuned!!
 
 <b>Backend:</b> Python, Flask, PostgreSQL, JSON, SQLAlchemy, Python unittest module (to be integrated)
 
-<b>Frontend:</b> JavaScript, React, AJAX, Jinja2, Bootstrap, HTML5, CSS, Bootstrap
+<b>Frontend:</b> JavaScript, React, AJAX, Jinja2, Bootstrap, HTML5, CSS,
 
-<b>APIS:</b> Cloudinary photo upload, Shippo API (to be integrated)
+<b>APIS:</b> Cloudinary photo upload, Google Fonts, Cloudflare Icons, Shippo API (to be integrated)
 
 Cloop is an app built on a Flask server with a PostgreSQL database, with SQLAlchemy as the ORM. The front end templating uses Jinja2, the HTML was built using Bootstrap, and the Javascript AJAX to interact with the backend. Images are uploaded using Cloudinary API. Servers will be tested via the Python testunit module. 
 
