@@ -11,6 +11,10 @@ body, #app, #user-listings, #marketplace-container, #create-listing-container, #
     text-align: center;
 }
 
+#process-entry {
+    background-image: "images/homepagecover.jpg"
+}
+
 /* login and signup */
 
 #login-box {
