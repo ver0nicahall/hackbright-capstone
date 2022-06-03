@@ -103,7 +103,7 @@ function Marketplace() {
       <div className='marketplace-head'>
         <div className="row">
           <div className="col-9"> 
-            <div className="banner"><h2><b>Cloop Marketplace</b></h2></div>
+            <div id="marketplace-banner" className="banner"><b>Cloop Marketplace</b></div>
           </div>
           <div className="col-3">
             <div id="searchForm">

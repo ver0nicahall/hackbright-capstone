@@ -5,12 +5,12 @@ function CreateListing() {
           <form action="/create_listing" method="POST" encType="multipart/form-data" id="listing-form">
             <fieldset>
               <div className="row">
-                <div className="col-6">
+                <div className="col-7">
                   <label htmlFor="title">Title:</label>
                   <input type="text" name="item_name" required/>
                 </div>
 
-                <div className="col-6">
+                <div className="col-5">
                 <label htmlFor="photos">Photos: </label>
                 <input type="file" name="listing-image" accept="image/*" required/>
                 </div>
@@ -22,7 +22,7 @@ function CreateListing() {
               </div>
               
               <label htmlFor="price">Price: </label>
-              <input type="text" name="price" required/>
+              <input type="text" name="price" placeholder="(min $1/ max $1000)"required/>
               
               <div className ="address">
                   <h3>Location:</h3>

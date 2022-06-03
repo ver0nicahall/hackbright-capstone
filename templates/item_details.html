@@ -13,25 +13,27 @@
     </div>
     <div id="posted-by">Owner: <a href="/users/{{ item.user.user_id }}">{{ item.user.email }}</a></div>
 
-    {% if item.user.email == session["user_email"] %}
-    <div id="edit-container">
-      <button id="edit-button">Edit Listing</button>
-      <div id="edit-details">
-        <form id="edit-form">
-          <p><b>Description:</b> <textarea name="description" id="description-field">{{ item.description }}</textarea></p>
-          <p><b>Price:</b> <input type="text" name="price" id="price-field" value="{{ item.price }}" /></p>
-          <p><b>Location:</b> <input type="text" name="city" id="city-field" value="{{ item.city }}" /> <input type="text" name="state" id="state-field" value="{{ item.state }}"/> <input type="text" id="zipcode-field" name="zipcode" value="{{ item.zipcode }}"/> </p>
-          <p><input type="submit" value="Save Changes"/></p>
-        </form>
-      </div>
-    </div>
-    {% endif %}
-    
     <div id="item-details">
-      <div id="details-banner">{{ item.item_name }}</div>
-      <div id="item-description"><b>Description:</b> <span id="description-span">{{ item.description }}</span></div>
-      <div id="item-price"> <b>Price:</b> $<span id="price-span">{{ item.price }}</span> per day</div>
-      <p><b>Location:</b> <span id="city-span">{{item.city}}</span> <span id="state-span">{{item.state}}</span> , <span id="zipcode-span">{{ item.zipcode}}</span></p>
+      {% if item.user.email == session["user_email"] %}
+      <div id="edit-container">
+        <button id="edit-button">Edit Listing</button>
+        <div id="edit-details">
+          <form action="/items/{{ item.item_id }}"id="edit-form">
+            <p>Title: <input type="text" name="title" id="item-name-field" value="{{ item.item_name }}"/></p>
+            <p><b>Description:</b> <textarea name="description" id="description-field">{{ item.description }}</textarea></p>
+            <p><b>Price:</b> <input type="text" name="price" id="price-field" value="{{ item.price }}" /></p>
+            <p><b>Location:</b> <input type="text" name="city" id="city-field" value="{{ item.city }}" /> <input type="text" name="state" id="state-field" value="{{ item.state }}"/> <input type="text" id="zipcode-field" name="zipcode" value="{{ item.zipcode }}"/> </p>
+            <p><input type="submit" value="Save Changes"/></p>
+          </form>
+        </div>
+      </div>
+    {% endif %}
+      <div id="nonedit-details">      
+        <div id="details-banner"><span id="item-name-span">{{ item.item_name }}</span></div>
+        <div id="item-description"><b>Description:</b> <span id="description-span">{{ item.description }}</span></div>
+        <div id="item-price"> <b>Price:</b> $<span id="price-span">{{ item.price }}</span> per day</div>
+        <p><b>Location:</b> <span id="city-span">{{item.city}}</span> <span id="state-span">{{item.state}}</span> , <span id="zipcode-span">{{ item.zipcode}}</span></p>
+      </div>
     </div>
 </div>
 

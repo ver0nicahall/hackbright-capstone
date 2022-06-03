@@ -1,7 +1,9 @@
 /* general */
 * {
-    font-family: "Verdana round"
+    font-family: "Verdana round";
+    background-color: #F7E6D3;
 }
+
 body, #app, #user-listings, #marketplace-container, #create-listing-container, #profile-header, #item-container {
     background-color: #F7E6D3;
 }
@@ -11,8 +13,14 @@ body, #app, #user-listings, #marketplace-container, #create-listing-container, #
     text-align: center;
 }
 
+#app {
+    height: 100%;
+}
+
 #process-entry {
-    background-image: "images/homepagecover.jpg"
+    background-image: "/static/images/homepagecover.jpg";
+    margin: 0px;
+    border: 2px solid black;
 }
 
 /* login and signup */
@@ -56,7 +64,11 @@ footer {
     margin: 2px;
     background-color: #D2D6C7;
 }
+/*marketplace banner*/
 
+#marketplace-banner { 
+    font-size: 40px;
+}
 /* booking form*/ 
 
 #booking-form {
@@ -117,6 +129,10 @@ textarea {
 
 .radio {
     margin-bottom: 1em;
+}
+
+input {
+    background-color: none;
 }
 
 input[type="radio"] {

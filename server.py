@@ -280,6 +280,7 @@ def delete_item(item_id):
         item = crud.get_item_by_id(item_id)
 
         #get form inputs, update items
+        item.item_name = request.json.get("itemName")
         item.description = request.json.get("description")
         item.price = int(request.json.get("price"))
         item.city = request.json.get("city")
@@ -290,6 +291,7 @@ def delete_item(item_id):
         db.session.commit()
         
         return jsonify({
+            'item_name': item.item_name,
             'description': item.description,
             'price': item.price,
             'city': item.city,

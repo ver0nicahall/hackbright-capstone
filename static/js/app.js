@@ -21,12 +21,12 @@ function makeSticky() {
 //Event handler to show edit form if user clicks edit button
 let editDetails = document.querySelector('#edit-details')
 let editButton = document.querySelector('#edit-button')
-let itemDetails = document.querySelector('#item-details');
+let noneditDetails = document.querySelector('#nonedit-details');
 
 //function to show edit form and hide description
 function showEditForm() {
     //hide description form
-    itemDetails.style.display = "none";
+    noneditDetails.style.display = "none";
     //show edit form
     editDetails.style.display = "block";
 
@@ -36,7 +36,7 @@ function showEditForm() {
 function hideEditForm() {
     //hide edit form 
     editDetails.style.display = "none";
-    itemDetails.style.display = "block";
+    noneditDetails.style.display = "block";
 }
 
 editButton.addEventListener('click', showEditForm)
@@ -47,6 +47,7 @@ function handleEditChanges(evt) {
     evt.preventDefault();
     console.log("window.location:", window.location.pathname)
 
+    let itemName = document.querySelector('#item-name-field').value
     let description = document.querySelector('#description-field').value
     let price = document.querySelector('#price-field').value
     let city = document.querySelector('#city-field').value
@@ -55,6 +56,7 @@ function handleEditChanges(evt) {
 
     //get form inputs 
     const formInputs = {
+        itemName: itemName,
         description: description,
         price: price,
         city: city,
@@ -80,6 +82,7 @@ function handleEditChanges(evt) {
             console.log(data);
             console.log(data["price"]);
             
+            document.querySelector('#item-name-span').textContent = data["item_name"]
             document.querySelector('#description-span').textContent = data["description"]
             document.querySelector('#price-span').textContent = data["price"]
             document.querySelector('#city-span').textContent = data["city"]
