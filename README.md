@@ -34,7 +34,10 @@ To run Cloop:
 (to be updated)
 
 ## For Version 2.0:
-- **Messages:** Ability for users to message each other with questions re: items
+- **Messages:** Ability for users to message each other with questions about items. Users can send and receive messages.
 - **Ratings** After a rental is complete, a user has the ability to leave a rating and comments on their experience with the item for future borrowers to see. 
 - **Likes/Views** Ability for users to "like" or bookmark items and view them later. Tracker for likes and views, ability to sort by most popular items.
 - **Password hashing:** Passwords will be hashed before being saved to the database
+
+## For Version 3.0!!:
+- **Nationwide:** Users can browse listings available nationwide and rent items from anyone in the US. Shipping instructions and packaging are handled through the website. 

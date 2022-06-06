@@ -1,10 +1,9 @@
 /* general */
 * {
     font-family: "Verdana round";
-    background-color: #F7E6D3;
 }
 
-body, #app, #user-listings, #marketplace-container, #create-listing-container, #profile-header, #item-container {
+body, .container-fluid, #app, #user-listings, #marketplace-container, #create-listing-container, #profile-header, #item-container {
     background-color: #F7E6D3;
 }
 
