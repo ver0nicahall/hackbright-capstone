@@ -3,8 +3,13 @@
     font-family: "Verdana round";
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
 
-body, .container-fluid, #app, #user-listings, #marketplace-container, #create-listing-container, #profile-header, #item-container {
+body, .container-fluid {
     background-color: #F7E6D3;
 }
 
@@ -53,24 +58,21 @@ body, .container-fluid, #app, #user-listings, #marketplace-container, #create-li
 
 /* login and signup */
 
-#login-box {
-    border: solid black 1px;
-    margin: auto;
-    padding: 10px;
-    width: 50%
-}
-
 .login-form {
     margin: auto;
     width: 50%;
     padding: 10px;
 }
 
+#login-image {
+    width: 100%;
+}
+
 #signup-div {
     background-image: "/static/images/signupbackground.jpg";
 }
 
-#signup-box {
+#signup-box, #login-box {
     border: solid black 1px;
     text-align: center;
 }
@@ -89,6 +91,7 @@ footer {
     text-align: center;
     margin: 2px;
     background-color: #D2D6C7;
+    margin-top: 0px;
 }
 /*marketplace banner*/
 
@@ -116,37 +119,26 @@ footer {
 
 
 /* fieldset and listing form*/ 
-fieldset {
-    margin: 2em 0;
-    padding: 1em, 2em;
-    border: solid 1px #ccc;
-    border-radius: 6px;
-    min-width: 200px;
-}
 
 label {
-    display:block;
+    display: block;
     margin-top: 1em;
 }
 
-label:first-of-type {
-    margin-top: 0;
-}
 
 .radio label {
     margin-top: 0;
 }
 
                 /* inputs and text area */
+
 input {
     padding: .5em;
     border: solid 1px #999;
 
 }
 textarea {
-    min-height: 8em;
-    max-width: 50%;
-    padding: .5em;
+   
     border: solid 1px #999;
 
 }
@@ -159,6 +151,11 @@ textarea {
 
 input {
     background-color: none;
+}
+
+input[type="text"], input[type="file"] {
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 input[type="radio"] {
@@ -194,14 +191,25 @@ input[type="submit"] {
     font-size: .8em;
 }
 
+
 .new-description {
     margin-bottom: 1em;
-    width: 70%;
+    width: 60%;
+    display: block;
     margin-left: auto;
     margin-right: auto;
-    display: block;
-    text-align: center;
 }
+
+#description-textarea {
+    width: 1000px;
+    height: 100px;
+}
+
+#create-listing-submit {
+    margin: auto;
+    width: 50%;
+}
+
 /* navbar */
 #navbar {
     background-color: #D2D6C7;
@@ -230,7 +238,7 @@ input[type="submit"] {
 }
 
 /* images */
-img:hover {
+.listing-preview:hover {
     filter: blur(1px);
 }
 
@@ -278,6 +286,7 @@ img:hover {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 20px;
     width: 50%;
     display: block;
     font-family: "Varela Round", "Arial", sans-serif;
@@ -316,4 +325,8 @@ img:hover {
 
 #searchby {
     margin-right: 10px;
+}
+
+#create-listing-container {
+    margin: 100px 50px 350px 50px;
 }

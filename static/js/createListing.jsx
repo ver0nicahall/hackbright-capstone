@@ -4,25 +4,29 @@ function CreateListing() {
           <div className="banner"><h2 className="banner">New Listing</h2></div>
           <form action="/create_listing" method="POST" encType="multipart/form-data" id="listing-form">
             <fieldset>
-              <div className="row">
-                <div className="col-7">
+              <div className="row align-items-center">
+                <div className="col-4">
                   <label htmlFor="title">Title:</label>
                   <input type="text" name="item_name" required/>
                 </div>
 
-                <div className="col-5">
+                <div className="col-4">
+                  <label htmlFor="price">Price: $</label>
+                  <input type="text" name="price" placeholder="(min $1/ max $1000)"required/>
+                </div>
+
+                <div className="col-4">
                 <label htmlFor="photos">Photos: </label>
                 <input type="file" name="listing-image" accept="image/*" required/>
                 </div>
               </div>
     
-              <div className=" new-description row">
-                <label htmlFor="description">Description:</label> 
-                <textarea name="description" id="listing-form" placeholder="Describe your item"/>
+              <div className="row align-items-center">
+                <div id="new-description">
+                  <label htmlFor="description">Description:</label> 
+                  <div><textarea name="description" id="description-textarea" placeholder="Describe your item"/></div>
+                </div>
               </div>
-              
-              <label htmlFor="price">Price: </label>
-              <input type="text" name="price" placeholder="(min $1/ max $1000)"required/>
               
               <div className ="address">
                   <h3>Location:</h3>
@@ -38,8 +42,8 @@ function CreateListing() {
                   <label htmlFor="available">Available:</label>
                   <input type="radio" name="available" id="availableChoice1" value="true" required/> <label htmlFor="availableChoice1">Yes</label>
                   <input type="radio" name="available" id="availableChoice2" value="false"/> <label htmlFor="availableChoice2">No</label>
-              </div>    
-              <p> <input type="submit" value="Post Item"/> </p>
+              </div> 
+              <div id="create-listing-submit"> <input type="submit" value="Post Item"/> </div>
             </fieldset>
           </form>
       </div>

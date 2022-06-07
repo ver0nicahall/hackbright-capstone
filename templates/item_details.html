@@ -3,6 +3,7 @@
 {% block title %}{{ item.item_name }} - Details{% endblock %}
 
 {% block body %}
+<div class="container-fluid">
 <div id="navbar-container"></div>
 <div id="item-container">
 
@@ -45,8 +46,8 @@
   </div>
 {% else %}
   <div id="booking-div"></div>
-  <div id="contact-div"></div>
 {% endif %}
+</div>
 
 {% endblock %}
 
