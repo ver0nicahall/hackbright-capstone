@@ -3,13 +3,43 @@
     font-family: "Verdana round";
 }
 
+
 body, .container-fluid, #app, #user-listings, #marketplace-container, #create-listing-container, #profile-header, #item-container {
     background-color: #F7E6D3;
 }
 
 /* homepage */
+
+.logo {
+    font-size: 80px;
+    font-family: "monoton";
+}
+
+#byline {
+    font-size: 25px;
+}
+
+#subline {
+    font-size: 20px;
+}
+
+.emphasize {
+    font-weight: 900;
+}
+
+#signup-line {
+    font-size: 20px;
+}
+
 #homepage-container {
     text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: block;
+}
+
+#homepage-image {
+    width: 90%;
 }
 
 #app {
@@ -17,7 +47,6 @@ body, .container-fluid, #app, #user-listings, #marketplace-container, #create-li
 }
 
 #process-entry {
-    background-image: "/static/images/homepagecover.jpg";
     margin: 0px;
     border: 2px solid black;
 }
@@ -35,6 +64,10 @@ body, .container-fluid, #app, #user-listings, #marketplace-container, #create-li
     margin: auto;
     width: 50%;
     padding: 10px;
+}
+
+#signup-div {
+    background-image: "/static/images/signupbackground.jpg";
 }
 
 #signup-box {
