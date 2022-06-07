@@ -19,7 +19,7 @@ model.db.create_all()
 #random generation of clothing
 colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
 adjs = ['fancy', 'cute', 'comfy', 'expensive', 'well-loved', 'gala']
-articles = ['hat', 'dress', 'shirt', 'jeans', 'skirt', 'overalls', 'onesie', 'costume']
+articles = ['hat', 'dress', 'shirt', 'jeans', 'skirt', 'overalls', 'leather jacket', 'heels']
 
 #lists to use later
 users_in_db = []
@@ -45,9 +45,26 @@ for n in range(1, 11):
 
         item = crud.create_item(name, 'test description', randint(1, 20), 0, 0, '123 main st', 'sunnyvale', 'CA', '94085', False, True, user)
 
-        #for each item, create 2 images
+        #for each item, create 2 imagess
         for n in range (1, 2):
-            image = crud.create_image('https://dodo.ac/np/images/thumb/8/80/Mabel_NH.png/150px-Mabel_NH.png', item) #placeholder image
+            if "dress" in item.item_name:
+                image = crud.create_image('/static/images/samples/dress.jpeg', item)
+            elif "shirt" in item.item_name:
+                image = crud.create_image('/static/images/samples/shirt.jpeg', item)
+            elif "hat" in item.item_name:
+                image = crud.create_image('/static/images/samples/hat.jpeg', item)
+            elif "skirt" in item.item_name:
+                image = crud.create_image('/static/images/samples/skirt.jpeg', item)
+            elif "overalls" in item.item_name:
+                image = crud.create_image('/static/images/samples/overalls.jpeg', item)
+            elif "jeans" in item.item_name:
+                image = crud.create_image('/static/images/samples/jeans.jpeg', item)
+            elif "leather" in item.item_name:
+                image = crud.create_image('/static/images/samples/leather.jpeg', item)
+            elif "heels" in item.item_name:
+                image = crud.create_image('/static/images/samples/heels.jpeg', item)
+            else: 
+                image = crud.create_image('https://dodo.ac/np/images/thumb/8/80/Mabel_NH.png/150px-Mabel_NH.png', item) #placeholder image
             #add images to database
             model.db.session.add(image)
 
