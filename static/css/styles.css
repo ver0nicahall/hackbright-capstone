@@ -38,7 +38,7 @@ body, .container-fluid, #app, #user-listings, #marketplace-container, #create-li
     display: block;
 }
 
-#homepage-image {
+#homepage-image, #signup-image {
     width: 90%;
 }
 
@@ -76,7 +76,7 @@ body, .container-fluid, #app, #user-listings, #marketplace-container, #create-li
 }
 
 #email-label {
-  margin-bottom: 10px;
+    scroll-margin-bottom: 10px;
 }
 
 #password-label {
