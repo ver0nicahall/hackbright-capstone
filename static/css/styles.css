@@ -72,21 +72,15 @@ body, .container-fluid, #app, #user-listings, #marketplace-container, #create-li
 
 #signup-box {
     border: solid black 1px;
-    margin: auto;
-    padding: 10px;
-    width: 50%
+    text-align: center;
 }
 
-.signup-form {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
+#email-label {
+  margin-bottom: 10px;
 }
 
-.signup-form h1 {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
+#password-label {
+    margin-top: 10px;
 }
 
 /* footer */
